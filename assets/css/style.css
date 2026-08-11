@@ -396,7 +396,7 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
 }
 .items-table{
   width: 100%;
-  min-width: 620px;
+  min-width: 720px;
   border-collapse: collapse;
   font-size: .85rem;
 }
@@ -426,6 +426,32 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
   color: var(--ink);
 }
 .items-table input[type="url"]:focus{ outline: 2px solid var(--accent); outline-offset: 1px; }
+.items-table .link-cell{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.items-table .link-cell input[type="url"]{ min-width: 130px; }
+.items-table .open-link{
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
+  transition: background .15s, transform .15s;
+}
+.items-table .open-link:hover{ background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+.items-table .open-link.disabled{
+  background: var(--stamp-gray-bg);
+  color: var(--ink-faint);
+  pointer-events: none;
+  cursor: default;
+}
 .items-table .cell-status{ white-space: nowrap; }
 .items-table .stamp{ font-size: .66rem; padding: 4px 10px; }
 .items-table .row-del-btn{

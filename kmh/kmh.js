@@ -119,6 +119,44 @@ function closeModal(){
 modalCloseBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
+function syncOpenLink(a, value){
+  const v = (value || '').trim();
+  if (v) {
+    a.href = v;
+    a.classList.remove('disabled');
+    a.removeAttribute('tabindex');
+  } else {
+    a.removeAttribute('href');
+    a.classList.add('disabled');
+    a.tabIndex = -1;
+  }
+}
+
+function buildLinkCell(value, placeholder){
+  const td = document.createElement('td');
+  const wrap = document.createElement('div');
+  wrap.className = 'link-cell';
+
+  const input = document.createElement('input');
+  input.type = 'url';
+  input.placeholder = placeholder;
+  input.value = value || '';
+
+  const openLink = document.createElement('a');
+  openLink.className = 'open-link';
+  openLink.target = '_blank';
+  openLink.rel = 'noopener';
+  openLink.title = 'Mở link';
+  openLink.textContent = '↗';
+  syncOpenLink(openLink, value);
+
+  input.addEventListener('input', () => syncOpenLink(openLink, input.value));
+
+  wrap.append(input, openLink);
+  td.appendChild(wrap);
+  return { td, input, openLink };
+}
+
 function renderItemsTable(items){
   itemsTbody.innerHTML = '';
   items.forEach(item => itemsTbody.appendChild(buildItemRow(item)));
@@ -128,30 +166,13 @@ function buildItemRow(item){
   const tr = document.createElement('tr');
   tr.dataset.id = item.id;
 
-  const linkTd = document.createElement('td');
-  const linkInput = document.createElement('input');
-  linkInput.type = 'url';
-  linkInput.placeholder = 'https://...';
-  linkInput.value = item.link || '';
-  linkTd.appendChild(linkInput);
-
+  const { td: linkTd, input: linkInput } = buildLinkCell(item.link, 'https://...');
   const statusTd = document.createElement('td');
   statusTd.className = 'cell-status';
   statusTd.innerHTML = stampHtml(computeItemStatus(item));
 
-  const subTd = document.createElement('td');
-  const subInput = document.createElement('input');
-  subInput.type = 'url';
-  subInput.placeholder = 'https://...';
-  subInput.value = item.submissionLink || '';
-  subTd.appendChild(subInput);
-
-  const attTd = document.createElement('td');
-  const attInput = document.createElement('input');
-  attInput.type = 'url';
-  attInput.placeholder = 'Link Drive/Photos';
-  attInput.value = item.attachmentLink || '';
-  attTd.appendChild(attInput);
+  const { td: subTd, input: subInput } = buildLinkCell(item.submissionLink, 'https://...');
+  const { td: attTd, input: attInput } = buildLinkCell(item.attachmentLink, 'Link Drive/Photos');
 
   const delTd = document.createElement('td');
   const delBtn = document.createElement('button');
