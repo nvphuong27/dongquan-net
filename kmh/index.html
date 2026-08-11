@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài tập KMH — Đông Quân's English Corner</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/">Đông Quân<span class="dot">.</span>English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Trang chủ</a>
+      <a href="/kmh/" class="active">Bài tập KMH</a>
+      <a href="/grammar/">Chủ điểm ngữ pháp</a>
+      <a href="/extra/">Bài tập làm thêm</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <p class="eyebrow">Bài tập KMH</p>
+  <h1>Bài tập theo tuần</h1>
+  <p>Dán link bài tập cô giáo gửi vào từng tuần. Khi nộp lại ảnh/video, trạng thái sẽ tự chuyển sang <strong>Finish</strong>.</p>
+</div>
+
+<p class="status-line" id="sync-status">Đang tải dữ liệu…</p>
+
+<div class="week-grid" id="week-grid">
+  <!-- Các thẻ tuần được render tự động bằng JS -->
+  <button class="week-card add-card" id="add-week-btn" type="button" aria-label="Thêm tuần mới">
+    <span class="plus">+</span>
+    <span>Thêm tuần mới</span>
+  </button>
+</div>
+
+<!-- Modal chỉnh sửa 1 tuần -->
+<div class="modal-overlay" id="week-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close-btn" aria-label="Đóng">×</button>
+    <p class="eyebrow" id="modal-week-label">Tuần 1</p>
+    <h3 id="modal-week-title">Tiêu đề tuần</h3>
+    <p id="modal-status-badge"></p>
+
+    <div class="field">
+      <label for="assignment-input">🔗 Link bài tập (cô giáo gửi)</label>
+      <div class="row">
+        <input type="url" id="assignment-input" placeholder="https://...">
+        <button class="btn accent" id="save-assignment-btn">Lưu</button>
+      </div>
+      <p class="link-preview" id="assignment-preview"></p>
+    </div>
+
+    <div class="field">
+      <label for="submission-input">📎 Link bài nộp (ảnh/video con đã làm)</label>
+      <div class="row">
+        <input type="url" id="submission-input" placeholder="https://...">
+        <button class="btn accent" id="save-submission-btn">Lưu</button>
+      </div>
+      <p class="link-preview" id="submission-preview"></p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Đông Quân<span class="dot">.</span>English Corner — dongquan.net</p>
+</footer>
+
+<script type="module" src="/kmh/kmh.js"></script>
+</body>
+</html>
