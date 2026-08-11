@@ -15,7 +15,7 @@
     <span></span><span></span><span></span><span></span>
   </div>
   <div class="header-inner">
-    <a class="brand" href="/">Đông Quân<span class="dot">.</span>English Corner</a>
+    <a class="brand" href="/">Đông Quân's English Corner</a>
     <nav class="main-nav">
       <a href="/">Trang chủ</a>
       <a href="/kmh/" class="active">Bài tập KMH</a>
@@ -44,34 +44,39 @@
 
 <!-- Modal chỉnh sửa 1 tuần -->
 <div class="modal-overlay" id="week-modal">
+  <div class="space-deco" aria-hidden="true">
+    <span class="deco planet">🪐</span>
+    <span class="deco astronaut">🧑‍🚀</span>
+    <span class="deco moon">🌙</span>
+    <span class="deco star star-1">✦</span>
+    <span class="deco star star-2">✦</span>
+  </div>
   <div class="modal-box">
     <button class="modal-close" id="modal-close-btn" aria-label="Đóng">×</button>
     <p class="eyebrow" id="modal-week-label">Tuần 1</p>
     <h3 id="modal-week-title">Tiêu đề tuần</h3>
     <p id="modal-status-badge"></p>
 
-    <div class="field">
-      <label for="assignment-input">🔗 Link bài tập (cô giáo gửi)</label>
-      <div class="row">
-        <input type="url" id="assignment-input" placeholder="https://...">
-        <button class="btn accent" id="save-assignment-btn">Lưu</button>
-      </div>
-      <p class="link-preview" id="assignment-preview"></p>
+    <div class="items-table-wrap">
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>🔗 Link bài tập</th>
+            <th>Trạng thái</th>
+            <th>📎 Link bài đã làm</th>
+            <th>📌 Đính kèm (Drive/Photos)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="items-tbody"></tbody>
+      </table>
     </div>
-
-    <div class="field">
-      <label for="submission-input">📎 Link bài nộp (ảnh/video con đã làm)</label>
-      <div class="row">
-        <input type="url" id="submission-input" placeholder="https://...">
-        <button class="btn accent" id="save-submission-btn">Lưu</button>
-      </div>
-      <p class="link-preview" id="submission-preview"></p>
-    </div>
+    <button class="btn outline" id="add-item-btn" type="button">+ Thêm bài tập</button>
   </div>
 </div>
 
 <footer class="site-footer">
-  <p>Đông Quân<span class="dot">.</span>English Corner — dongquan.net</p>
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
 </footer>
 
 <script type="module" src="/kmh/kmh.js"></script>

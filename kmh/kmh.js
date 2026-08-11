@@ -1,4 +1,5 @@
 // Module Bài tập KMH — đồng bộ qua Firebase Firestore
+// Mỗi tuần có nhiều "bài tập" (items): link cô giáo gửi, link bài đã làm, link đính kèm.
 import { firebaseConfig } from '/assets/js/firebase-config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import {
@@ -19,20 +20,49 @@ const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalWeekLabel = document.getElementById('modal-week-label');
 const modalWeekTitle = document.getElementById('modal-week-title');
 const modalStatusBadge = document.getElementById('modal-status-badge');
-const assignmentInput = document.getElementById('assignment-input');
-const submissionInput = document.getElementById('submission-input');
-const assignmentPreview = document.getElementById('assignment-preview');
-const submissionPreview = document.getElementById('submission-preview');
-const saveAssignmentBtn = document.getElementById('save-assignment-btn');
-const saveSubmissionBtn = document.getElementById('save-submission-btn');
+const itemsTbody = document.getElementById('items-tbody');
+const addItemBtn = document.getElementById('add-item-btn');
 
 let currentWeekId = null;
-let weeksData = {}; // cache tất cả tuần theo id
+let weeksData = {}; // cache tất cả tuần theo id, đã được chuẩn hoá (normalize)
 
-function computeStatus(w){
-  if (w.submissionLink) return 'finish';
-  if (w.assignmentLink) return 'pending';
+function newId(){
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
+}
+
+// Chuyển dữ liệu tuần cũ (1 link bài tập + 1 link bài nộp) sang model "nhiều bài tập"
+function normalizeWeek(raw){
+  if (Array.isArray(raw.items)){
+    return { ...raw, items: raw.items };
+  }
+  const hasLegacyLink = raw.assignmentLink || raw.submissionLink;
+  const legacyItem = {
+    id: newId(),
+    link: raw.assignmentLink || '',
+    submissionLink: raw.submissionLink || '',
+    attachmentLink: ''
+  };
+  return { ...raw, items: hasLegacyLink ? [legacyItem] : [] };
+}
+
+function computeItemStatus(item){
+  if (item.submissionLink) return 'finish';
+  if (item.link) return 'pending';
   return 'empty';
+}
+
+function computeWeekStatus(items){
+  if (!items || !items.length) return 'empty';
+  const statuses = items.map(computeItemStatus);
+  if (statuses.every(s => s === 'finish')) return 'finish';
+  if (statuses.some(s => s !== 'empty')) return 'pending';
+  return 'empty';
+}
+
+function weekProgressText(items){
+  if (!items || !items.length) return '';
+  const done = items.filter(it => computeItemStatus(it) === 'finish').length;
+  return `${done}/${items.length} hoàn thành`;
 }
 
 function stampHtml(status){
@@ -48,7 +78,8 @@ function renderGrid(){
   const sorted = Object.values(weeksData).sort((a,b) => a.week - b.week);
 
   sorted.forEach(w => {
-    const status = computeStatus(w);
+    const status = computeWeekStatus(w.items);
+    const progress = weekProgressText(w.items);
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'week-card';
@@ -56,6 +87,7 @@ function renderGrid(){
       <span class="week-num">TUẦN ${String(w.week).padStart(2,'0')}</span>
       <span class="week-title">${escapeHtml(w.title || ('Tuần ' + w.week))}</span>
       ${stampHtml(status)}
+      ${progress ? `<span class="week-progress">${progress}</span>` : ''}
     `;
     card.addEventListener('click', () => openModal(w.id));
     grid.insertBefore(card, addBtn);
@@ -74,16 +106,9 @@ function openModal(weekId){
   currentWeekId = weekId;
   modalWeekLabel.textContent = `Tuần ${w.week}`;
   modalWeekTitle.textContent = w.title || `Tuần ${w.week}`;
-  modalStatusBadge.innerHTML = stampHtml(computeStatus(w));
-  assignmentInput.value = w.assignmentLink || '';
-  submissionInput.value = w.submissionLink || '';
-  updatePreview(assignmentPreview, w.assignmentLink);
-  updatePreview(submissionPreview, w.submissionLink);
+  modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(w.items));
+  renderItemsTable(w.items);
   modal.classList.add('open');
-}
-
-function updatePreview(el, link){
-  el.innerHTML = link ? `Đang lưu: <a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(link)}</a>` : '';
 }
 
 function closeModal(){
@@ -94,18 +119,95 @@ function closeModal(){
 modalCloseBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-saveAssignmentBtn.addEventListener('click', async () => {
-  if (!currentWeekId) return;
-  const link = assignmentInput.value.trim();
-  await updateDoc(doc(db, 'kmh_weeks', currentWeekId), { assignmentLink: link });
-  updatePreview(assignmentPreview, link);
-});
+function renderItemsTable(items){
+  itemsTbody.innerHTML = '';
+  items.forEach(item => itemsTbody.appendChild(buildItemRow(item)));
+}
 
-saveSubmissionBtn.addEventListener('click', async () => {
-  if (!currentWeekId) return;
-  const link = submissionInput.value.trim();
-  await updateDoc(doc(db, 'kmh_weeks', currentWeekId), { submissionLink: link });
-  updatePreview(submissionPreview, link);
+function buildItemRow(item){
+  const tr = document.createElement('tr');
+  tr.dataset.id = item.id;
+
+  const linkTd = document.createElement('td');
+  const linkInput = document.createElement('input');
+  linkInput.type = 'url';
+  linkInput.placeholder = 'https://...';
+  linkInput.value = item.link || '';
+  linkTd.appendChild(linkInput);
+
+  const statusTd = document.createElement('td');
+  statusTd.className = 'cell-status';
+  statusTd.innerHTML = stampHtml(computeItemStatus(item));
+
+  const subTd = document.createElement('td');
+  const subInput = document.createElement('input');
+  subInput.type = 'url';
+  subInput.placeholder = 'https://...';
+  subInput.value = item.submissionLink || '';
+  subTd.appendChild(subInput);
+
+  const attTd = document.createElement('td');
+  const attInput = document.createElement('input');
+  attInput.type = 'url';
+  attInput.placeholder = 'Link Drive/Photos';
+  attInput.value = item.attachmentLink || '';
+  attTd.appendChild(attInput);
+
+  const delTd = document.createElement('td');
+  const delBtn = document.createElement('button');
+  delBtn.type = 'button';
+  delBtn.className = 'row-del-btn';
+  delBtn.title = 'Xoá dòng';
+  delBtn.textContent = '🗑';
+  delTd.appendChild(delBtn);
+
+  tr.append(linkTd, statusTd, subTd, attTd, delTd);
+
+  const commit = () => saveItemFields(item.id, {
+    link: linkInput.value.trim(),
+    submissionLink: subInput.value.trim(),
+    attachmentLink: attInput.value.trim()
+  }, statusTd);
+
+  linkInput.addEventListener('change', commit);
+  subInput.addEventListener('change', commit);
+  attInput.addEventListener('change', commit);
+  delBtn.addEventListener('click', () => deleteItem(item.id));
+
+  return tr;
+}
+
+async function saveItemFields(itemId, patch, statusTdEl){
+  const w = weeksData[currentWeekId];
+  if (!w) return;
+  const items = w.items.map(it => it.id === itemId ? { ...it, ...patch } : it);
+  w.items = items;
+  const updated = items.find(it => it.id === itemId);
+  if (statusTdEl) statusTdEl.innerHTML = stampHtml(computeItemStatus(updated));
+  modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(items));
+  await updateDoc(doc(db, 'kmh_weeks', currentWeekId), { items });
+}
+
+async function deleteItem(itemId){
+  const w = weeksData[currentWeekId];
+  if (!w) return;
+  if (!window.confirm('Xoá dòng bài tập này?')) return;
+  const items = w.items.filter(it => it.id !== itemId);
+  w.items = items;
+  renderItemsTable(items);
+  modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(items));
+  await updateDoc(doc(db, 'kmh_weeks', currentWeekId), { items });
+}
+
+addItemBtn.addEventListener('click', async () => {
+  const w = weeksData[currentWeekId];
+  if (!w) return;
+  const item = { id: newId(), link: '', submissionLink: '', attachmentLink: '' };
+  const items = [...w.items, item];
+  w.items = items;
+  itemsTbody.appendChild(buildItemRow(item));
+  modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(items));
+  await updateDoc(doc(db, 'kmh_weeks', currentWeekId), { items });
 });
 
 addBtn.addEventListener('click', async () => {
@@ -117,8 +219,7 @@ addBtn.addEventListener('click', async () => {
   await setDoc(doc(db, 'kmh_weeks', id), {
     week: nextWeek,
     title: title || `Tuần ${nextWeek}`,
-    assignmentLink: '',
-    submissionLink: ''
+    items: []
   });
 });
 
@@ -127,16 +228,18 @@ const q = query(weeksCol, orderBy('week', 'asc'));
 onSnapshot(q, (snapshot) => {
   weeksData = {};
   snapshot.forEach(docSnap => {
-    weeksData[docSnap.id] = { id: docSnap.id, ...docSnap.data() };
+    const raw = { id: docSnap.id, ...docSnap.data() };
+    weeksData[docSnap.id] = normalizeWeek(raw);
   });
   renderGrid();
   syncStatus.textContent = snapshot.empty
     ? 'Chưa có tuần nào — bấm "Thêm tuần mới" để bắt đầu.'
     : `Đã đồng bộ — ${snapshot.size} tuần.`;
 
-  // Nếu modal đang mở đúng tuần này, cập nhật badge theo dữ liệu mới nhất
+  // Nếu modal đang mở đúng tuần này, chỉ cập nhật badge tổng — không render lại bảng
+  // để tránh mất nội dung người dùng đang gõ giữa các dòng khác.
   if (currentWeekId && weeksData[currentWeekId]) {
-    modalStatusBadge.innerHTML = stampHtml(computeStatus(weeksData[currentWeekId]));
+    modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(weeksData[currentWeekId].items));
   }
 }, (err) => {
   console.error(err);
