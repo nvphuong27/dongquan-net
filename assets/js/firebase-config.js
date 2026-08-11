@@ -27,10 +27,10 @@
 // ==============================================================
 
 export const firebaseConfig = {
-  apiKey: "DIEN_API_KEY_CUA_BAN_VAO_DAY",
-  authDomain: "ten-project.firebaseapp.com",
-  projectId: "ten-project",
-  storageBucket: "ten-project.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:xxxxxxxxxxxxxxxx"
+  apiKey: "AIzaSyCX8LTnet0OnEPmCpoq2Ea06awj1pENkgA",
+  authDomain: "dongquan-net-9e319.firebaseapp.com",
+  projectId: "dongquan-net-9e319",
+  storageBucket: "dongquan-net-9e319.firebasestorage.app",
+  messagingSenderId: "934427289735",
+  appId: "1:934427289735:web:2e68f4c93204bc7b6bf022"
 };
