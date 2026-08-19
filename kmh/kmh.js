@@ -6,10 +6,97 @@ import {
   getFirestore, collection, doc, setDoc, updateDoc,
   onSnapshot, query, orderBy
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { msalConfig, ONEDRIVE_SCOPES, isOneDriveConfigured } from '/assets/js/onedrive-config.js';
+import { PublicClientApplication } from 'https://esm.sh/@azure/msal-browser@3.30.0';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const weeksCol = collection(db, 'kmh_weeks');
+
+// ---------------- OneDrive (đính kèm file, giới hạn 1 folder riêng) ----------------
+const ONEDRIVE_CONFIGURED = isOneDriveConfigured();
+const GRAPH_APPFOLDER = 'https://graph.microsoft.com/v1.0/me/drive/special/approot';
+let msalInstance = null;
+let msalAccount = null;
+
+async function initMsal(){
+  if (!ONEDRIVE_CONFIGURED) return;
+  msalInstance = new PublicClientApplication(msalConfig);
+  await msalInstance.initialize();
+  const redirectResult = await msalInstance.handleRedirectPromise().catch(() => null);
+  msalAccount = redirectResult?.account || msalInstance.getAllAccounts()[0] || null;
+}
+const msalReady = initMsal();
+
+async function getGraphToken(){
+  if (!ONEDRIVE_CONFIGURED) throw new Error('Chưa cấu hình OneDrive — xem assets/js/onedrive-config.js');
+  await msalReady;
+  if (!msalAccount) {
+    const loginResult = await msalInstance.loginPopup({ scopes: ONEDRIVE_SCOPES });
+    msalAccount = loginResult.account;
+  }
+  try {
+    const result = await msalInstance.acquireTokenSilent({ scopes: ONEDRIVE_SCOPES, account: msalAccount });
+    return result.accessToken;
+  } catch (err) {
+    const result = await msalInstance.acquireTokenPopup({ scopes: ONEDRIVE_SCOPES, account: msalAccount });
+    msalAccount = result.account;
+    return result.accessToken;
+  }
+}
+
+function sanitizeFileName(name){
+  return (name || 'file').replace(/[\\/:*?"<>|#%]/g, '_');
+}
+
+// Upload file vào folder riêng của app trên OneDrive (không đụng tới chỗ khác).
+async function uploadFileToOneDrive(file){
+  const token = await getGraphToken();
+  const safeName = `${Date.now()}-${sanitizeFileName(file.name)}`;
+  const path = `${GRAPH_APPFOLDER}:/${encodeURIComponent(safeName)}:`;
+
+  if (file.size <= 4 * 1024 * 1024) {
+    const res = await fetch(`${path}/content`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': file.type || 'application/octet-stream'
+      },
+      body: file
+    });
+    if (!res.ok) throw new Error(`Tải lên thất bại (${res.status})`);
+    const item = await res.json();
+    return item.webUrl;
+  }
+
+  // File lớn hơn 4MB: dùng upload session, chia thành từng đoạn 5MB.
+  const sessionRes = await fetch(`${path}/createUploadSession`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ item: { '@microsoft.graph.conflictBehavior': 'rename' } })
+  });
+  if (!sessionRes.ok) throw new Error(`Không tạo được upload session (${sessionRes.status})`);
+  const { uploadUrl } = await sessionRes.json();
+
+  const chunkSize = 5 * 1024 * 1024;
+  let start = 0;
+  let lastItem = null;
+  while (start < file.size) {
+    const end = Math.min(start + chunkSize, file.size);
+    const chunkRes = await fetch(uploadUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Length': String(end - start),
+        'Content-Range': `bytes ${start}-${end - 1}/${file.size}`
+      },
+      body: file.slice(start, end)
+    });
+    if (!chunkRes.ok) throw new Error(`Tải lên thất bại ở đoạn ${start}-${end} (${chunkRes.status})`);
+    if (end === file.size) lastItem = await chunkRes.json();
+    start = end;
+  }
+  return lastItem?.webUrl;
+}
 
 const grid = document.getElementById('week-grid');
 const addBtn = document.getElementById('add-week-btn');
@@ -30,18 +117,34 @@ function newId(){
   return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
 }
 
+// Chuyển 1 item cũ (1 ô "Đính kèm" chung) sang model 2 ô đính kèm riêng (bài tập / bài làm).
+// Đính kèm cũ được giữ lại ở ô "bài làm" vì đó là nơi hay dùng để nộp ảnh minh chứng.
+function normalizeItem(it){
+  if (it.assignmentAttachmentLink !== undefined || it.submissionAttachmentLink !== undefined) {
+    return {
+      ...it,
+      assignmentAttachmentLink: it.assignmentAttachmentLink || '',
+      submissionAttachmentLink: it.submissionAttachmentLink || ''
+    };
+  }
+  return {
+    ...it,
+    assignmentAttachmentLink: '',
+    submissionAttachmentLink: it.attachmentLink || ''
+  };
+}
+
 // Chuyển dữ liệu tuần cũ (1 link bài tập + 1 link bài nộp) sang model "nhiều bài tập"
 function normalizeWeek(raw){
   if (Array.isArray(raw.items)){
-    return { ...raw, items: raw.items };
+    return { ...raw, items: raw.items.map(normalizeItem) };
   }
   const hasLegacyLink = raw.assignmentLink || raw.submissionLink;
-  const legacyItem = {
+  const legacyItem = normalizeItem({
     id: newId(),
     link: raw.assignmentLink || '',
-    submissionLink: raw.submissionLink || '',
-    attachmentLink: ''
-  };
+    submissionLink: raw.submissionLink || ''
+  });
   return { ...raw, items: hasLegacyLink ? [legacyItem] : [] };
 }
 
@@ -162,6 +265,106 @@ function renderItemsTable(items){
   items.forEach(item => itemsTbody.appendChild(buildItemRow(item)));
 }
 
+// 1 ô đính kèm: nhãn (BT/BL) + input link + nút mở + nút tải file lên OneDrive.
+function buildAttachRow(tag, value){
+  const wrapper = document.createElement('div');
+  wrapper.className = 'attach-block';
+
+  const row = document.createElement('div');
+  row.className = 'attach-row';
+
+  const tagEl = document.createElement('span');
+  tagEl.className = 'attach-tag';
+  tagEl.textContent = tag;
+
+  const input = document.createElement('input');
+  input.type = 'url';
+  input.className = 'attach-link';
+  input.placeholder = 'Chưa có file';
+  input.value = value || '';
+
+  const openLink = document.createElement('a');
+  openLink.className = 'attach-open';
+  openLink.target = '_blank';
+  openLink.rel = 'noopener';
+  openLink.title = 'Mở file';
+  openLink.textContent = '↗';
+  syncOpenLink(openLink, value);
+
+  const uploadBtn = document.createElement('button');
+  uploadBtn.type = 'button';
+  uploadBtn.className = 'attach-upload';
+  uploadBtn.title = 'Tải file lên OneDrive';
+  uploadBtn.textContent = '📎';
+
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.hidden = true;
+
+  const errEl = document.createElement('p');
+  errEl.className = 'attach-error';
+  errEl.hidden = true;
+
+  input.addEventListener('input', () => syncOpenLink(openLink, input.value));
+
+  uploadBtn.addEventListener('click', () => {
+    errEl.hidden = true;
+    if (!ONEDRIVE_CONFIGURED){
+      errEl.textContent = 'Chưa cấu hình OneDrive — xem assets/js/onedrive-config.js';
+      errEl.hidden = false;
+      return;
+    }
+    fileInput.click();
+  });
+
+  row.append(tagEl, input, openLink, uploadBtn, fileInput);
+  wrapper.append(row, errEl);
+
+  return { wrapper, input, openLink, uploadBtn, fileInput, errEl };
+}
+
+function wireAttachUpload({ input, openLink, uploadBtn, fileInput, errEl }, onUploaded){
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    fileInput.value = '';
+    if (!file) return;
+    errEl.hidden = true;
+    uploadBtn.disabled = true;
+    const prevLabel = uploadBtn.textContent;
+    uploadBtn.textContent = '…';
+    try {
+      const webUrl = await uploadFileToOneDrive(file);
+      input.value = webUrl;
+      syncOpenLink(openLink, webUrl);
+      onUploaded();
+    } catch (err) {
+      console.error(err);
+      errEl.textContent = 'Tải lên lỗi: ' + (err.message || err);
+      errEl.hidden = false;
+    } finally {
+      uploadBtn.disabled = false;
+      uploadBtn.textContent = prevLabel;
+    }
+  });
+}
+
+function buildAttachCell(item){
+  const td = document.createElement('td');
+  td.className = 'cell-attach';
+  const bt = buildAttachRow('BT', item.assignmentAttachmentLink);
+  const bl = buildAttachRow('BL', item.submissionAttachmentLink);
+  td.append(bt.wrapper, bl.wrapper);
+  return {
+    td,
+    assignmentInput: bt.input,
+    submissionInput: bl.input,
+    wireUploads(commit){
+      wireAttachUpload(bt, commit);
+      wireAttachUpload(bl, commit);
+    }
+  };
+}
+
 function buildItemRow(item){
   const tr = document.createElement('tr');
   tr.dataset.id = item.id;
@@ -172,7 +375,7 @@ function buildItemRow(item){
   statusTd.innerHTML = stampHtml(computeItemStatus(item));
 
   const { td: subTd, input: subInput } = buildLinkCell(item.submissionLink, 'https://...');
-  const { td: attTd, input: attInput } = buildLinkCell(item.attachmentLink, 'Link Drive/Photos');
+  const attCell = buildAttachCell(item);
 
   const delTd = document.createElement('td');
   const delBtn = document.createElement('button');
@@ -182,17 +385,20 @@ function buildItemRow(item){
   delBtn.textContent = '🗑';
   delTd.appendChild(delBtn);
 
-  tr.append(linkTd, statusTd, subTd, attTd, delTd);
+  tr.append(linkTd, statusTd, subTd, attCell.td, delTd);
 
   const commit = () => saveItemFields(item.id, {
     link: linkInput.value.trim(),
     submissionLink: subInput.value.trim(),
-    attachmentLink: attInput.value.trim()
+    assignmentAttachmentLink: attCell.assignmentInput.value.trim(),
+    submissionAttachmentLink: attCell.submissionInput.value.trim()
   }, statusTd);
 
   linkInput.addEventListener('change', commit);
   subInput.addEventListener('change', commit);
-  attInput.addEventListener('change', commit);
+  attCell.assignmentInput.addEventListener('change', commit);
+  attCell.submissionInput.addEventListener('change', commit);
+  attCell.wireUploads(commit);
   delBtn.addEventListener('click', () => deleteItem(item.id));
 
   return tr;
@@ -223,7 +429,7 @@ async function deleteItem(itemId){
 addItemBtn.addEventListener('click', async () => {
   const w = weeksData[currentWeekId];
   if (!w) return;
-  const item = { id: newId(), link: '', submissionLink: '', attachmentLink: '' };
+  const item = { id: newId(), link: '', submissionLink: '', assignmentAttachmentLink: '', submissionAttachmentLink: '' };
   const items = [...w.items, item];
   w.items = items;
   itemsTbody.appendChild(buildItemRow(item));
