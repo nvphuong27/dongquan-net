@@ -123,6 +123,7 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
   font-size: 1.3rem;
   color: #fff;
 }
+.brand-icon{ font-size: 1.1em; }
 
 .main-nav{
   display: flex;
@@ -209,6 +210,17 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
   max-width: var(--max-width);
   margin: 0 auto;
 }
+.back-home-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+}
+.back-home-link:hover{ text-decoration: underline; }
 
 /* ---------------- Week grid (KMH) ---------------- */
 .week-grid{

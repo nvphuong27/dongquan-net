@@ -19,7 +19,7 @@
     })
     .then(items => {
       if (!Array.isArray(items) || items.length === 0) {
-        target.innerHTML = '<p class="empty-state">Chưa có bài nào — sắp có bài mới, quay lại sau nhé!</p>';
+        target.innerHTML = '<p class="empty-state">No posts yet — new content coming soon, check back later!</p>';
         return;
       }
       target.innerHTML = items.map(item => `
@@ -34,6 +34,6 @@
     })
     .catch(err => {
       console.error(err);
-      target.innerHTML = '<p class="empty-state">⚠️ Chưa tải được danh sách. Kiểm tra lại file index.json.</p>';
+      target.innerHTML = '<p class="empty-state">⚠️ Could not load the list. Please check the index.json file.</p>';
     });
 })();

@@ -29,7 +29,7 @@ async function initMsal(){
 const msalReady = initMsal();
 
 async function getGraphToken(){
-  if (!ONEDRIVE_CONFIGURED) throw new Error('Chưa cấu hình OneDrive — xem assets/js/onedrive-config.js');
+  if (!ONEDRIVE_CONFIGURED) throw new Error('OneDrive not configured — see assets/js/onedrive-config.js');
   await msalReady;
   if (!msalAccount) {
     const loginResult = await msalInstance.loginPopup({ scopes: ONEDRIVE_SCOPES });
@@ -64,7 +64,7 @@ async function uploadFileToOneDrive(file){
       },
       body: file
     });
-    if (!res.ok) throw new Error(`Tải lên thất bại (${res.status})`);
+    if (!res.ok) throw new Error(`Upload failed (${res.status})`);
     const item = await res.json();
     return item.webUrl;
   }
@@ -75,7 +75,7 @@ async function uploadFileToOneDrive(file){
     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ item: { '@microsoft.graph.conflictBehavior': 'rename' } })
   });
-  if (!sessionRes.ok) throw new Error(`Không tạo được upload session (${sessionRes.status})`);
+  if (!sessionRes.ok) throw new Error(`Could not create upload session (${sessionRes.status})`);
   const { uploadUrl } = await sessionRes.json();
 
   const chunkSize = 5 * 1024 * 1024;
@@ -91,7 +91,7 @@ async function uploadFileToOneDrive(file){
       },
       body: file.slice(start, end)
     });
-    if (!chunkRes.ok) throw new Error(`Tải lên thất bại ở đoạn ${start}-${end} (${chunkRes.status})`);
+    if (!chunkRes.ok) throw new Error(`Upload failed at chunk ${start}-${end} (${chunkRes.status})`);
     if (end === file.size) lastItem = await chunkRes.json();
     start = end;
   }
@@ -165,13 +165,13 @@ function computeWeekStatus(items){
 function weekProgressText(items){
   if (!items || !items.length) return '';
   const done = items.filter(it => computeItemStatus(it) === 'finish').length;
-  return `${done}/${items.length} hoàn thành`;
+  return `${done}/${items.length} completed`;
 }
 
 function stampHtml(status){
   if (status === 'finish') return `<span class="stamp finish">✔ Finish</span>`;
   if (status === 'pending') return `<span class="stamp pending">● Pending</span>`;
-  return `<span class="stamp empty">Chưa có bài</span>`;
+  return `<span class="stamp empty">Not started</span>`;
 }
 
 function renderGrid(){
@@ -187,8 +187,8 @@ function renderGrid(){
     card.type = 'button';
     card.className = 'week-card';
     card.innerHTML = `
-      <span class="week-num">TUẦN ${String(w.week).padStart(2,'0')}</span>
-      <span class="week-title">${escapeHtml(w.title || ('Tuần ' + w.week))}</span>
+      <span class="week-num">WEEK ${String(w.week).padStart(2,'0')}</span>
+      <span class="week-title">${escapeHtml(w.title || ('Week ' + w.week))}</span>
       ${stampHtml(status)}
       ${progress ? `<span class="week-progress">${progress}</span>` : ''}
     `;
@@ -207,8 +207,8 @@ function openModal(weekId){
   const w = weeksData[weekId];
   if (!w) return;
   currentWeekId = weekId;
-  modalWeekLabel.textContent = `Tuần ${w.week}`;
-  modalWeekTitle.textContent = w.title || `Tuần ${w.week}`;
+  modalWeekLabel.textContent = `Week ${w.week}`;
+  modalWeekTitle.textContent = w.title || `Week ${w.week}`;
   modalStatusBadge.innerHTML = stampHtml(computeWeekStatus(w.items));
   renderItemsTable(w.items);
   modal.classList.add('open');
@@ -249,7 +249,7 @@ function buildLinkCell(value, placeholder){
   openLink.className = 'open-link';
   openLink.target = '_blank';
   openLink.rel = 'noopener';
-  openLink.title = 'Mở link';
+  openLink.title = 'Open link';
   openLink.textContent = '↗';
   syncOpenLink(openLink, value);
 
@@ -280,21 +280,21 @@ function buildAttachRow(tag, value){
   const input = document.createElement('input');
   input.type = 'url';
   input.className = 'attach-link';
-  input.placeholder = 'Chưa có file';
+  input.placeholder = 'No file yet';
   input.value = value || '';
 
   const openLink = document.createElement('a');
   openLink.className = 'attach-open';
   openLink.target = '_blank';
   openLink.rel = 'noopener';
-  openLink.title = 'Mở file';
+  openLink.title = 'Open file';
   openLink.textContent = '↗';
   syncOpenLink(openLink, value);
 
   const uploadBtn = document.createElement('button');
   uploadBtn.type = 'button';
   uploadBtn.className = 'attach-upload';
-  uploadBtn.title = 'Tải file lên OneDrive';
+  uploadBtn.title = 'Upload file to OneDrive';
   uploadBtn.textContent = '📎';
 
   const fileInput = document.createElement('input');
@@ -310,7 +310,7 @@ function buildAttachRow(tag, value){
   uploadBtn.addEventListener('click', () => {
     errEl.hidden = true;
     if (!ONEDRIVE_CONFIGURED){
-      errEl.textContent = 'Chưa cấu hình OneDrive — xem assets/js/onedrive-config.js';
+      errEl.textContent = 'OneDrive not configured — see assets/js/onedrive-config.js';
       errEl.hidden = false;
       return;
     }
@@ -339,7 +339,7 @@ function wireAttachUpload({ input, openLink, uploadBtn, fileInput, errEl }, onUp
       onUploaded();
     } catch (err) {
       console.error(err);
-      errEl.textContent = 'Tải lên lỗi: ' + (err.message || err);
+      errEl.textContent = 'Upload error: ' + (err.message || err);
       errEl.hidden = false;
     } finally {
       uploadBtn.disabled = false;
@@ -381,7 +381,7 @@ function buildItemRow(item){
   const delBtn = document.createElement('button');
   delBtn.type = 'button';
   delBtn.className = 'row-del-btn';
-  delBtn.title = 'Xoá dòng';
+  delBtn.title = 'Delete row';
   delBtn.textContent = '🗑';
   delTd.appendChild(delBtn);
 
@@ -418,7 +418,7 @@ async function saveItemFields(itemId, patch, statusTdEl){
 async function deleteItem(itemId){
   const w = weeksData[currentWeekId];
   if (!w) return;
-  if (!window.confirm('Xoá dòng bài tập này?')) return;
+  if (!window.confirm('Delete this homework row?')) return;
   const items = w.items.filter(it => it.id !== itemId);
   w.items = items;
   renderItemsTable(items);
@@ -440,12 +440,12 @@ addItemBtn.addEventListener('click', async () => {
 addBtn.addEventListener('click', async () => {
   const nums = Object.values(weeksData).map(w => w.week);
   const nextWeek = nums.length ? Math.max(...nums) + 1 : 1;
-  const title = window.prompt(`Tên hiển thị cho Tuần ${nextWeek} (có thể để trống):`, `Tuần ${nextWeek}`);
+  const title = window.prompt(`Display name for Week ${nextWeek} (can be left blank):`, `Week ${nextWeek}`);
   if (title === null) return; // bấm Cancel
   const id = String(nextWeek);
   await setDoc(doc(db, 'kmh_weeks', id), {
     week: nextWeek,
-    title: title || `Tuần ${nextWeek}`,
+    title: title || `Week ${nextWeek}`,
     items: []
   });
 });
@@ -460,8 +460,8 @@ onSnapshot(q, (snapshot) => {
   });
   renderGrid();
   syncStatus.textContent = snapshot.empty
-    ? 'Chưa có tuần nào — bấm "Thêm tuần mới" để bắt đầu.'
-    : `Đã đồng bộ — ${snapshot.size} tuần.`;
+    ? 'No weeks yet — click "Add new week" to get started.'
+    : `Synced — ${snapshot.size} week${snapshot.size === 1 ? '' : 's'}.`;
 
   // Nếu modal đang mở đúng tuần này, chỉ cập nhật badge tổng — không render lại bảng
   // để tránh mất nội dung người dùng đang gõ giữa các dòng khác.
@@ -470,5 +470,5 @@ onSnapshot(q, (snapshot) => {
   }
 }, (err) => {
   console.error(err);
-  syncStatus.textContent = '⚠️ Không kết nối được Firebase. Kiểm tra lại firebase-config.js và Firestore Rules.';
+  syncStatus.textContent = '⚠️ Could not connect to Firebase. Check firebase-config.js and Firestore Rules.';
 });

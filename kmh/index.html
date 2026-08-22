@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bài tập KMH — Đông Quân's English Corner</title>
+<title>KMH Homework — Đông Quân's English Corner</title>
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -15,34 +15,35 @@
     <span></span><span></span><span></span><span></span>
   </div>
   <div class="header-inner">
-    <a class="brand" href="/">Đông Quân's English Corner</a>
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
     <nav class="main-nav">
-      <a href="/">Trang chủ</a>
-      <a href="/kmh/" class="active">Bài tập KMH</a>
-      <a href="/grammar/">Chủ điểm ngữ pháp</a>
-      <a href="/extra/">Bài tập làm thêm</a>
+      <a href="/">Home</a>
+      <a href="/kmh/" class="active">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
       <a href="/blog/">Blog</a>
     </nav>
   </div>
 </header>
 
 <div class="page-head">
-  <p class="eyebrow">Bài tập KMH</p>
-  <h1>Bài tập theo tuần</h1>
-  <p>Dán link bài tập cô giáo gửi vào từng tuần. Khi nộp lại ảnh/video, trạng thái sẽ tự chuyển sang <strong>Finish</strong>.</p>
+  <a class="back-home-link" href="/">← Home</a>
+  <p class="eyebrow">KMH Homework</p>
+  <h1>Weekly Homework</h1>
+  <p>Paste the homework link your teacher sends for each week. Once you submit a photo/video, the status automatically switches to <strong>Finish</strong>.</p>
 </div>
 
-<p class="status-line" id="sync-status">Đang tải dữ liệu…</p>
+<p class="status-line" id="sync-status">Loading data…</p>
 
 <div class="week-grid" id="week-grid">
-  <!-- Các thẻ tuần được render tự động bằng JS -->
-  <button class="week-card add-card" id="add-week-btn" type="button" aria-label="Thêm tuần mới">
+  <!-- Week cards are rendered automatically by JS -->
+  <button class="week-card add-card" id="add-week-btn" type="button" aria-label="Add new week">
     <span class="plus">+</span>
-    <span>Thêm tuần mới</span>
+    <span>Add new week</span>
   </button>
 </div>
 
-<!-- Modal chỉnh sửa 1 tuần -->
+<!-- Modal for editing one week -->
 <div class="modal-overlay" id="week-modal">
   <div class="space-deco" aria-hidden="true">
     <span class="deco planet">🪐</span>
@@ -52,26 +53,26 @@
     <span class="deco star star-2">✦</span>
   </div>
   <div class="modal-box">
-    <button class="modal-close" id="modal-close-btn" aria-label="Đóng">×</button>
-    <p class="eyebrow" id="modal-week-label">Tuần 1</p>
-    <h3 id="modal-week-title">Tiêu đề tuần</h3>
+    <button class="modal-close" id="modal-close-btn" aria-label="Close">×</button>
+    <p class="eyebrow" id="modal-week-label">Week 1</p>
+    <h3 id="modal-week-title">Week title</h3>
     <p id="modal-status-badge"></p>
 
     <div class="items-table-wrap">
       <table class="items-table">
         <thead>
           <tr>
-            <th>🔗 Link bài tập</th>
-            <th>Trạng thái</th>
-            <th>📎 Link bài đã làm</th>
-            <th>📌 Đính kèm (OneDrive)</th>
+            <th>🔗 Assignment link</th>
+            <th>Status</th>
+            <th>📎 Submission link</th>
+            <th>📌 Attachment (OneDrive)</th>
             <th></th>
           </tr>
         </thead>
         <tbody id="items-tbody"></tbody>
       </table>
     </div>
-    <button class="btn outline" id="add-item-btn" type="button">+ Thêm bài tập</button>
+    <button class="btn outline" id="add-item-btn" type="button">+ Add assignment</button>
   </div>
 </div>
 
