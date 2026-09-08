@@ -572,6 +572,21 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
   color: var(--ink-faint);
 }
 .item-card .arrow{ color: var(--accent-dark); font-size: 1.2rem; }
+.item-card .file-tag{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--stamp-red-bg);
+  color: var(--stamp-red);
+  border: 1px solid var(--stamp-red);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 .empty-state{
   text-align: center;
   padding: 60px 20px;

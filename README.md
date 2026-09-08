@@ -44,6 +44,30 @@ git push -u origin main
 
 > ⚠️ Rule ở trên cho phép **ai có link cũng ghi được dữ liệu** (vì site không có đăng nhập, theo đúng yêu cầu ban đầu là để công khai). Phù hợp cho quy mô gia đình/cá nhân, nhưng không nên chia sẻ link rộng rãi nếu không muốn người lạ sửa dữ liệu.
 
+### 3b. Thêm bài tập dài hạn (tab "Long-term Assignment")
+
+Tab này **không dùng Firebase** — file PDF được lưu thẳng trong repo GitHub, cạnh code.
+
+1. Copy file PDF vào thư mục `long-term/`
+2. Đặt tên file bắt đầu bằng ngày. Cả 2 kiểu dưới đây đều được:
+   - `20260904 - Get ready for movers.pdf` → ngày `04/09/2026`, tiêu đề "Get ready for movers"
+   - `2026-09-04-book-report.pdf` → ngày `04/09/2026`, tiêu đề "Book report"
+
+   Quy tắc script tự áp dụng:
+   - Ngày hiện ra ở danh sách, bài mới nhất tự xếp lên đầu
+   - Tên kiểu slug (`book-report`) thì gạch nối tự đổi thành khoảng trắng;
+     tên đã có khoảng trắng thì giữ nguyên (nên `Part-time work.pdf` không bị phá)
+   - Không đặt ngày cũng được — khi đó bài xếp xuống cuối, sắp theo tên file
+   - Tên file có khoảng trắng dùng bình thường, không cần đổi thành gạch nối
+3. `git add long-term/ && git commit -m "Thêm bài tập dài hạn" && git push`
+4. GitHub Actions tự cập nhật `long-term/index.json`, danh sách hiện ra sau khoảng 1 phút
+
+Thư mục này cũng nhận file `.html` như `grammar/`/`extra/` nếu muốn viết bài trực tiếp
+thay vì đính PDF.
+
+> 💡 Giới hạn: GitHub chặn file lớn hơn 100MB, và repo nên giữ dưới khoảng 1GB.
+> PDF bài tập thường chỉ vài trăm KB nên hoàn toàn thoải mái.
+
 ### 4. Thêm nội dung mới (Chủ điểm ngữ pháp / Bài tập làm thêm / Blog)
 - Build file `.html` mới (có thể copy 1 file mẫu có sẵn trong `grammar/`, `extra/`, hoặc `blog/posts/` rồi sửa nội dung)
 - Đặt đúng tag `<title>Tên bài học</title>` trong file — đây là tiêu đề sẽ hiện ra ở trang danh sách
@@ -67,7 +91,7 @@ dongquan-net/
 │   └── js/
 │       ├── main.js
 │       ├── firebase-config.js   # ⚠️ CẦN ĐIỀN CONFIG THẬT
-│       └── list-loader.js       # dùng chung cho grammar/extra/blog
+│       └── list-loader.js       # dùng chung cho grammar/extra/long-term/blog
 ├── kmh/                       # Module Bài tập KMH (Firebase)
 │   ├── index.html
 │   └── kmh.js
@@ -79,6 +103,9 @@ dongquan-net/
 │   ├── index.html
 │   ├── index.json
 │   └── ex-01-vocabulary-animals.html  (file mẫu)
+├── long-term/                 # Bài tập dài hạn — file PDF commit thẳng vào repo
+│   ├── index.html
+│   └── index.json             # tự sinh, không sửa tay
 ├── blog/
 │   ├── index.html
 │   └── posts/
