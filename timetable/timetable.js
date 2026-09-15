@@ -29,31 +29,31 @@ const TIMETABLE = {
       rows: [
         [
           { s: 'Chào cờ',              t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (Tập viết)',     t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Tập viết)',     t: 'C. Huỳnh', r: '2.10' },
           { s: 'Âm nhạc (TC)',         t: 'C. Ngọc',  r: 'Phòng AN',  x: true },
           { s: 'Mĩ thuật',             t: 'C. Thủy',  r: 'Phòng MT',  x: true },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
-          { s: 'TViệt (LTVC)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (LTVC)',         t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán (TC)',            t: 'C. Loan',  r: 'VH khối 2', x: true }
         ],
         [
-          { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TNXH',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tự nhiên và Xã hội',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TNXH',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (LVĐ)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Tự nhiên và Xã hội',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (LVĐ)',          t: 'C. Huỳnh', r: '2.10' }
         ],
         [
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
           { s: 'Đạo đức',              t: 'C. Loan',  r: 'VH khối 2', x: true },
-          { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC',  x: true },
-          { s: 'TViệt (ĐMR)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục',  x: true },
+          { s: 'Tiếng Việt (ĐMR)',          t: 'C. Huỳnh', r: '2.10' }
         ]
       ]
     },
@@ -65,24 +65,24 @@ const TIMETABLE = {
       timeNote: 'Riêng thứ 4 và thứ 6: 13h45 – 15h50',
       rows: [
         [
-          { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC', x: true },
-          { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (Nghe viết)',    t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục', x: true },
+          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Nghe – viết)',    t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (TC2)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Tiếng Việt (TC2)',          t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC', x: true },
-          { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'CDS-AI',               t: 'C. Ngọc',  r: 'VH',       x: true },
-          { s: 'TViệt (Nói – Nghe)',   t: 'C. Huỳnh', r: '2.10' },
-          { s: 'SHL',                  t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục', x: true },
+          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Công dân số – AI',               t: 'C. Ngọc',  r: 'VH',       x: true },
+          { s: 'Tiếng Việt (Nói – Nghe)',   t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Sinh hoạt lớp',                  t: 'C. Huỳnh', r: '2.10' }
         ],
         [
           { s: 'Âm nhạc',              t: 'C. Ngọc',  r: 'Phòng AN', x: true },
-          { s: 'HĐTN',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Hoạt động trải nghiệm',                 t: 'C. Huỳnh', r: '2.10' },
           null,
-          { s: 'TViệt (TC1)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (TC1)',          t: 'C. Huỳnh', r: '2.10' },
           null
         ]
       ]
@@ -90,20 +90,14 @@ const TIMETABLE = {
   ],
 
   glossary: [
-    ['TViệt',   'Tiếng Việt'],
-    ['ĐMR',     'Đọc mở rộng'],
-    ['LTVC',    'Luyện từ và câu'],
-    ['LVĐ',     'Luyện viết đoạn'],
-    ['TNXH',    'Tự nhiên và Xã hội'],
-    ['HĐTN',    'Hoạt động trải nghiệm'],
-    ['GDTC',    'Giáo dục thể chất (Thể dục)'],
-    ['SHL',     'Sinh hoạt lớp'],
-    ['TC',      'Tiết tăng cường'],
-    ['CDS-AI',  'Công dân số – AI'],
-    ['VH',      'Phòng văn hoá'],
+    ['ĐMR',          'Đọc mở rộng'],
+    ['LTVC',         'Luyện từ và câu'],
+    ['LVĐ',          'Luyện viết đoạn'],
+    ['TC',           'Tiết tăng cường'],
+    ['TC1 / TC2',    'Tiết tăng cường 1 / 2'],
+    ['VH',           'Phòng văn hoá'],
     ['AV / AN / MT', 'Phòng Anh văn / Âm nhạc / Mĩ thuật']
-  ]
-};
+  ]};
 
 /* ------------------------- render ------------------------- */
 

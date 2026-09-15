@@ -795,7 +795,7 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
 }
 .tt-table{
   width: 100%;
-  min-width: 820px;
+  min-width: 900px;
   border-collapse: separate;
   border-spacing: 6px;
 }
