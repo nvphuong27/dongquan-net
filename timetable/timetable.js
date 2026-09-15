@@ -25,34 +25,35 @@ const TIMETABLE = {
       key: 'morning',
       label: 'Buổi sáng',
       icon: '🌤️',
+      time: '7h15 – 10h25',
       rows: [
         [
           { s: 'Chào cờ',              t: 'C. Huỳnh', r: '2.10' },
           { s: 'TViệt (Tập viết)',     t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Mĩ thuật',             t: 'C. Thủy',  r: 'Phòng MT', x: true },
+          { s: 'Âm nhạc (TC)',         t: 'C. Ngọc',  r: 'Phòng AN',  x: true },
+          { s: 'Mĩ thuật',             t: 'C. Thủy',  r: 'Phòng MT',  x: true },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' }
         ],
         [
           { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV', x: true },
-          { s: 'TViệt (Nói – Nghe)',   t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán TC',              t: 'C. Loan',  r: 'VH khối 2', x: true }
+          { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
+          { s: 'TViệt (LTVC)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán (TC)',            t: 'C. Loan',  r: 'VH khối 2', x: true }
         ],
         [
           { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
           { s: 'TNXH',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (Nghe viết)',    t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'TNXH',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (ĐMR)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'TViệt (LVĐ)',          t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'CDS-AI',               t: 'C. Ngọc',  r: 'VH',        x: true },
+          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
           { s: 'Đạo đức',              t: 'C. Loan',  r: 'VH khối 2', x: true },
-          { s: 'GDTC (TC)',            t: 'Th. Viên', r: 'Sân GDTC',  x: true },
-          { s: 'Âm nhạc (TC)',         t: 'C. Ngọc',  r: 'Phòng AN',  x: true }
+          { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC',  x: true },
+          { s: 'TViệt (ĐMR)',          t: 'C. Huỳnh', r: '2.10' }
         ]
       ]
     },
@@ -60,24 +61,26 @@ const TIMETABLE = {
       key: 'afternoon',
       label: 'Buổi chiều',
       icon: '🌙',
+      time: '13h45 – 16h15',
+      timeNote: 'Riêng thứ 4 và thứ 6: 13h45 – 15h50',
       rows: [
         [
           { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC', x: true },
           { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'HĐTN',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'TViệt (Nghe viết)',    t: 'C. Huỳnh', r: '2.10' },
           { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
           { s: 'TViệt (TC2)',          t: 'C. Huỳnh', r: '2.10' }
         ],
         [
           { s: 'GDTC',                 t: 'Th. Viên', r: 'Sân GDTC', x: true },
           { s: 'TViệt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (LTVC)',         t: 'C. Huỳnh', r: '2.10' },
-          { s: 'TViệt (LVĐ)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'CDS-AI',               t: 'C. Ngọc',  r: 'VH',       x: true },
+          { s: 'TViệt (Nói – Nghe)',   t: 'C. Huỳnh', r: '2.10' },
           { s: 'SHL',                  t: 'C. Huỳnh', r: '2.10' }
         ],
         [
           { s: 'Âm nhạc',              t: 'C. Ngọc',  r: 'Phòng AN', x: true },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'HĐTN',                 t: 'C. Huỳnh', r: '2.10' },
           null,
           { s: 'TViệt (TC1)',          t: 'C. Huỳnh', r: '2.10' },
           null
@@ -93,7 +96,7 @@ const TIMETABLE = {
     ['LVĐ',     'Luyện viết đoạn'],
     ['TNXH',    'Tự nhiên và Xã hội'],
     ['HĐTN',    'Hoạt động trải nghiệm'],
-    ['GDTC',    'Giáo dục thể chất'],
+    ['GDTC',    'Giáo dục thể chất (Thể dục)'],
     ['SHL',     'Sinh hoạt lớp'],
     ['TC',      'Tiết tăng cường'],
     ['CDS-AI',  'Công dân số – AI'],
@@ -172,7 +175,9 @@ function buildDayCards(todayIdx){
                                   .filter(item => item.cell);
       if (!lessons.length) return;
 
-      card.appendChild(el('p', 'tt-day-session', session.icon + ' ' + session.label));
+      const sessionHead = el('p', 'tt-day-session', session.icon + ' ' + session.label);
+      if (session.time) sessionHead.appendChild(el('span', 'tt-session-time', session.time));
+      card.appendChild(sessionHead);
       const list = el('ol', 'tt-day-list');
       lessons.forEach(({ cell, period }) => {
         const li = el('li', cell.x ? 'is-special' : null);
@@ -230,7 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const h = el('h2', 'tt-session-title');
       h.appendChild(el('span', 'tt-session-icon', session.icon));
       h.appendChild(document.createTextNode(' ' + session.label));
+      if (session.time) h.appendChild(el('span', 'tt-session-time', session.time));
       block.appendChild(h);
+      if (session.timeNote) block.appendChild(el('p', 'tt-session-note', session.timeNote));
       block.appendChild(el('p', 'tt-scroll-hint', '← vuốt ngang để xem đủ 5 ngày →'));
       block.appendChild(buildTable(session, todayIdx));
       tableHost.appendChild(block);

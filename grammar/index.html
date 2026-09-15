@@ -35,6 +35,17 @@
   <p>This list updates automatically whenever a new lesson is added to the <code>grammar/</code> folder on GitHub.</p>
 </div>
 
+<div class="list-search">
+  <label class="search-field" for="grammar-search">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="grammar-search" disabled
+           placeholder="Tìm chủ điểm ngữ pháp… (ví dụ: hiện tại đơn, have has)"
+           aria-label="Tìm chủ điểm ngữ pháp theo tiêu đề"
+           autocomplete="off">
+  </label>
+  <p class="search-count" id="grammar-count" role="status" aria-live="polite"></p>
+</div>
+
 <div class="item-list" id="item-list">
   <p class="empty-state">Loading list…</p>
 </div>
@@ -43,6 +54,6 @@
   <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
 </footer>
 
-<script src="/assets/js/list-loader.js" data-folder="/grammar/" data-target="item-list"></script>
+<script src="/assets/js/list-loader.js" data-folder="/grammar/" data-target="item-list" data-search="grammar-search" data-count="grammar-count"></script>
 </body>
 </html>
