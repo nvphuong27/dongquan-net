@@ -8,8 +8,7 @@ const TIMETABLE = {
   schoolYear: 'Năm học 2026 – 2027 · Học kỳ 1',
   className: 'Lớp 2/10',
   teacher:  'Nguyễn Thị Như Huỳnh',
-  sheetNo:  'Số 11',
-  effectiveFrom: 'Thực hiện từ ngày 07/09/2026',
+  effectiveFrom: 'Thực hiện từ ngày 21/09/2026',
 
   days: [
     { key: 'mon', label: 'Thứ 2', short: 'T2', jsDay: 1 },
@@ -28,32 +27,32 @@ const TIMETABLE = {
       time: '7h15 – 10h25',
       rows: [
         [
-          { s: 'Chào cờ',              t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Việt (Tập viết)',     t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Âm nhạc (TC)',         t: 'C. Ngọc',  r: 'Phòng AN',  x: true },
-          { s: 'Mĩ thuật',             t: 'C. Thủy',  r: 'Phòng MT',  x: true },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Chào cờ',                  t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Nói – nghe)',  t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Âm nhạc (TC)',             t: 'C. Ngọc',  r: 'Phòng AN',    x: true },
+          { s: 'Mĩ thuật',                 t: 'C. Thủy',  r: 'Phòng MT',    x: true },
+          { s: 'Toán',                     t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
-          { s: 'Tiếng Việt (LTVC)',         t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán (TC)',            t: 'C. Loan',  r: 'VH khối 2', x: true }
+          { s: 'Toán',                     t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Tập viết)',    t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Anh',                t: 'C. Uyên',  r: 'Phòng AV',    x: true },
+          { s: 'Tiếng Việt (LTVC)',        t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán (TC)',                t: 'C. Loan',  r: 'VH khối 2',   x: true }
         ],
         [
-          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tự nhiên và Xã hội',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tự nhiên và Xã hội',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Việt (LVĐ)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Tiếng Việt (Đọc)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán',                     t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán',                     t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tự nhiên và Xã hội',       t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (LVĐ)',         t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Anh',            t: 'C. Uyên',  r: 'Phòng AV',  x: true },
-          { s: 'Đạo đức',              t: 'C. Loan',  r: 'VH khối 2', x: true },
-          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục',  x: true },
-          { s: 'Tiếng Việt (ĐMR)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Tiếng Việt (Đọc)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Anh',                t: 'C. Uyên',  r: 'Phòng AV',    x: true },
+          { s: 'Đạo đức',                  t: 'C. Loan',  r: 'VH khối 2',   x: true },
+          { s: 'Thể dục',                  t: 'Th. Viên', r: 'Sân thể dục', x: true },
+          { s: 'Tiếng Việt (ĐMR)',         t: 'C. Huỳnh', r: '2.10' }
         ]
       ]
     },
@@ -65,24 +64,24 @@ const TIMETABLE = {
       timeNote: 'Riêng thứ 4 và thứ 6: 13h45 – 15h50',
       rows: [
         [
-          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục', x: true },
-          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Việt (Nghe – viết)',    t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Toán',                 t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Tiếng Việt (TC2)',          t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Thể dục',                  t: 'Th. Viên', r: 'Sân thể dục', x: true },
+          { s: 'Tiếng Việt (Đọc)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (Nghe – viết)', t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Toán',                     t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Tiếng Việt (TC2)',         t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'Thể dục',                 t: 'Th. Viên', r: 'Sân thể dục', x: true },
-          { s: 'Tiếng Việt (Đọc)',          t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Công dân số – AI',               t: 'C. Ngọc',  r: 'VH',       x: true },
-          { s: 'Tiếng Việt (Nói – Nghe)',   t: 'C. Huỳnh', r: '2.10' },
-          { s: 'Sinh hoạt lớp',                  t: 'C. Huỳnh', r: '2.10' }
+          { s: 'Thể dục',                  t: 'Th. Viên', r: 'Sân thể dục', x: true },
+          { s: 'Tiếng Việt (Đọc)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Công dân số – AI',         t: 'C. Ngọc',  r: 'VH',          x: true },
+          { s: 'Tiếng Việt (TC1)',         t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Sinh hoạt lớp',            t: 'C. Huỳnh', r: '2.10' }
         ],
         [
-          { s: 'Âm nhạc',              t: 'C. Ngọc',  r: 'Phòng AN', x: true },
-          { s: 'Hoạt động trải nghiệm',                 t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Âm nhạc',                  t: 'C. Ngọc',  r: 'Phòng AN',    x: true },
+          { s: 'Tự nhiên và Xã hội',       t: 'C. Huỳnh', r: '2.10' },
           null,
-          { s: 'Tiếng Việt (TC1)',          t: 'C. Huỳnh', r: '2.10' },
+          { s: 'Hoạt động trải nghiệm',    t: 'C. Huỳnh', r: '2.10' },
           null
         ]
       ]
