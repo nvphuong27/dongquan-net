@@ -61,7 +61,7 @@ const TIMETABLE = {
       label: 'Buổi chiều',
       icon: '🌙',
       time: '13h45 – 16h15',
-      timeNote: 'Riêng thứ 4 và thứ 6: 13h45 – 15h50',
+      timeByDay: { wed: '13h45 – 15h50', fri: '13h45 – 15h50' }, // thứ 4 & thứ 6 tan sớm
       rows: [
         [
           { s: 'Thể dục',                  t: 'Th. Viên', r: 'Sân thể dục', x: true },
@@ -107,50 +107,9 @@ function el(tag, cls, text){
   return n;
 }
 
-function cellContent(cell){
-  const wrap = el('div', 'tt-cell' + (cell.x ? ' is-special' : ''));
-  wrap.appendChild(el('span', 'tt-subject', cell.s));
-  const meta = el('span', 'tt-meta');
-  meta.textContent = cell.r ? cell.t + ' · ' + cell.r : cell.t;
-  wrap.appendChild(meta);
-  return wrap;
-}
-
 function todayIndex(){
   const d = new Date().getDay();
   return TIMETABLE.days.findIndex(x => x.jsDay === d);
-}
-
-function buildTable(session, todayIdx){
-  const wrap = el('div', 'tt-table-wrap');
-  const table = el('table', 'tt-table');
-
-  const thead = el('thead');
-  const hr = el('tr');
-  hr.appendChild(el('th', 'tt-corner', 'Tiết'));
-  TIMETABLE.days.forEach((d, i) => {
-    const th = el('th', i === todayIdx ? 'is-today' : null, d.label);
-    hr.appendChild(th);
-  });
-  thead.appendChild(hr);
-  table.appendChild(thead);
-
-  const tbody = el('tbody');
-  session.rows.forEach((row, ri) => {
-    const tr = el('tr');
-    tr.appendChild(el('th', 'tt-period', String(ri + 1)));
-    row.forEach((cell, ci) => {
-      const td = el('td', ci === todayIdx ? 'is-today' : null);
-      if (cell) td.appendChild(cellContent(cell));
-      else { td.classList.add('tt-empty'); td.textContent = '—'; }
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-  });
-  table.appendChild(tbody);
-
-  wrap.appendChild(table);
-  return wrap;
 }
 
 function buildDayCards(todayIdx){
@@ -168,8 +127,9 @@ function buildDayCards(todayIdx){
                                   .filter(item => item.cell);
       if (!lessons.length) return;
 
+      const time = (session.timeByDay && session.timeByDay[day.key]) || session.time;
       const sessionHead = el('p', 'tt-day-session', session.icon + ' ' + session.label);
-      if (session.time) sessionHead.appendChild(el('span', 'tt-session-time', session.time));
+      if (time) sessionHead.appendChild(el('span', 'tt-session-time', time));
       card.appendChild(sessionHead);
       const list = el('ol', 'tt-day-list');
       lessons.forEach(({ cell, period }) => {
@@ -217,23 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
       item.appendChild(el('span', 'tt-meta-key', k));
       item.appendChild(el('span', 'tt-meta-val', v));
       metaHost.appendChild(item);
-    });
-  }
-
-  const tableHost = document.getElementById('tt-tables');
-  if (tableHost){
-    tableHost.innerHTML = '';
-    TIMETABLE.sessions.forEach(session => {
-      const block = el('section', 'tt-session');
-      const h = el('h2', 'tt-session-title');
-      h.appendChild(el('span', 'tt-session-icon', session.icon));
-      h.appendChild(document.createTextNode(' ' + session.label));
-      if (session.time) h.appendChild(el('span', 'tt-session-time', session.time));
-      block.appendChild(h);
-      if (session.timeNote) block.appendChild(el('p', 'tt-session-note', session.timeNote));
-      block.appendChild(el('p', 'tt-scroll-hint', '← vuốt ngang để xem đủ 5 ngày →'));
-      block.appendChild(buildTable(session, todayIdx));
-      tableHost.appendChild(block);
     });
   }
 
