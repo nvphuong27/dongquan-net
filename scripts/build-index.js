@@ -17,6 +17,7 @@ const ROOT = path.join(__dirname, '..');
 const TARGETS = [
   { dir: 'grammar', sortByDate: false },
   { dir: 'extra', sortByDate: false },
+  { dir: 'scratch', sortByDate: false },
   { dir: 'long-term', sortByDate: true, exts: ['.html', '.pdf'] },
   { dir: 'blog/posts', sortByDate: true },
 ];

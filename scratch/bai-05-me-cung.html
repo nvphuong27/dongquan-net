@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 5 — Mê cung phiêu lưu (chạm màu và khối của tôi)</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson">
+  <p class="back-link"><a href="/scratch/">← Quay lại danh sách bài học</a></p>
+  <p class="eyebrow">Scratch · Bài 5</p>
+  <h1>Mê cung phiêu lưu 🧭🏁</h1>
+  <p class="lead">Bài cuối của phần cơ bản — và cũng là bài oách nhất. Con sẽ <strong>tự tay vẽ</strong> mê cung, lăn quả bóng đi tìm đường ra mà không được đâm xuyên tường, và làm <strong>hai màn chơi</strong> nối tiếp nhau.</p>
+
+  <div class="meta-strip">
+    <span>⏱️ 60–75 phút</span>
+    <span>🎯 Mức: Cơ bản ++</span>
+    <span>🎨 Có vẽ hình</span>
+    <span>🧱 Có khối tự tạo</span>
+  </div>
+
+  <div class="box goal">
+    <h4>Học xong bài này con sẽ biết</h4>
+    <ul>
+      <li>Dùng <strong>trình vẽ</strong> của Scratch để tự tạo phông nền.</li>
+      <li>Cảm biến <strong>đang chạm màu</strong> — cách làm tường cứng mà không cần nhân vật tường.</li>
+      <li>Thủ thuật <strong>đi rồi lùi lại</strong> — bí kíp va chạm của mọi game mê cung.</li>
+      <li><strong>Khối của tôi</strong> (My Blocks) — tự đặt tên cho một nhóm việc, đúng như lập trình viên thật làm.</li>
+      <li>Chuyển <strong>màn chơi</strong> bằng phông nền và tin nhắn.</li>
+    </ul>
+  </div>
+
+  <h2>Phần A — Vẽ mê cung</h2>
+  <div class="step" data-step="1">
+    <h4>Tạo phông nền Màn 1</h4>
+    <ul style="color:var(--ink-soft)">
+      <li>Rê chuột vào nút 🖼️ góc dưới cùng bên phải → chọn biểu tượng cây cọ <strong>Vẽ</strong>.</li>
+      <li>Bấm tab <strong>Phông nền</strong> ở góc trên bên trái để vào trình vẽ.</li>
+      <li>Chọn công cụ <strong>Hình chữ nhật</strong>, đặt màu tô là <strong>đen</strong>.</li>
+      <li>Vẽ các bức tường thành một mê cung. Cứ vẽ thoải mái, nhớ chừa lối đi đủ rộng (rộng hơn quả bóng khoảng 3 lần).</li>
+      <li>Đổi màu tô sang <strong>xanh lá</strong>, vẽ một ô vuông nhỏ ở góc trên bên phải — đây là <strong>đích đến</strong>.</li>
+      <li>Đổi tên phông nền này thành <strong>Màn 1</strong> (ô tên ở góc trên trái của trình vẽ).</li>
+    </ul>
+    <div class="box warn">
+      <h4>⚠️ Hai điều tối quan trọng khi vẽ</h4>
+      <ul>
+        <li><strong>Tường phải liền mạch</strong>, không có khe hở — hở chỗ nào bóng lọt qua chỗ đó.</li>
+        <li>Chỉ dùng <strong>đúng một màu đen</strong> cho toàn bộ tường và <strong>đúng một màu xanh lá</strong> cho đích. Pha hai sắc đen hơi khác nhau là cảm biến màu sẽ nhận nhầm.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step" data-step="2">
+    <h4>Tạo thêm phông nền Màn 2</h4>
+    <p>Bấm chuột phải vào Màn 1 trong danh sách phông nền → <strong>Nhân bản</strong> → đổi tên thành <strong>Màn 2</strong>. Rồi sửa lại cho mê cung khó hơn: thêm vài bức tường, làm lối đi ngoằn ngoèo hơn.</p>
+    <p>Nhớ giữ nguyên <strong>vị trí xuất phát</strong> (góc dưới bên trái) trống và <strong>ô xanh lá</strong> ở đâu đó.</p>
+  </div>
+
+  <div class="step" data-step="3">
+    <h4>Chuẩn bị quả bóng</h4>
+    <ul style="color:var(--ink-soft)">
+      <li>Xoá chú mèo (mèo to quá, không lọt mê cung). Thêm nhân vật <strong>Ball</strong>.</li>
+      <li>Đổi tên thành <strong>NguoiChoi</strong>.</li>
+      <li>Tạo một tin nhắn mới tên <strong>qua màn</strong> (giống cách làm ở bài 4).</li>
+    </ul>
+  </div>
+
+  <h2>Phần B — Bí kíp tường cứng</h2>
+  <div class="box why">
+    <h4>🤔 Làm sao để bóng không xuyên tường?</h4>
+    <p>Máy tính không tự biết "tường là thứ không đi qua được". Mẹo mà mọi lập trình viên game dùng là <strong>"cứ đi rồi lùi lại"</strong>:</p>
+    <ol>
+      <li>Nhích lên 3 bước.</li>
+      <li>Hỏi ngay: <em>mình có đang chạm màu đen không?</em></li>
+      <li>Nếu có → nhích <strong>ngược lại 3 bước</strong>, trở về đúng chỗ cũ.</li>
+    </ol>
+    <p>Máy tính làm việc này cực nhanh (hàng chục lần mỗi giây), nên mắt người chơi chỉ thấy quả bóng <em>bị tường chặn đứng</em> — không hề thấy nó đi vào rồi lùi ra.</p>
+  </div>
+
+  <div class="sb-stack">
+    <div class="sb-c sb-palette-control sb-c-last">
+      <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên lên</span> được nhấn?</span> thì</div>
+      <div class="sb-c-body">
+        <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">3</span></div>
+        <div class="sb-c sb-palette-control sb-c-last">
+          <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#111"></span> ?</span> thì</div>
+          <div class="sb-c-body">
+            <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-3</span></div>
+          </div>
+          <div class="sb-c-foot"></div>
+        </div>
+      </div>
+      <div class="sb-c-foot"></div>
+    </div>
+  </div>
+  <p>Đây là một <strong>khối nếu nằm trong một khối nếu</strong> — lập trình viên gọi là "lồng nhau". Đọc thành lời: <em>"Nếu đang nhấn phím lên thì đi lên 3; mà nếu đi lên xong lại chạm tường thì đi xuống 3 để quay về."</em></p>
+
+  <div class="box tip">
+    <h4>💡 Cách lấy đúng màu tường</h4>
+    <p>Bấm vào <strong>ô màu nhỏ</strong> trong khối <em>đang chạm màu</em> → bảng chọn màu hiện ra → bấm biểu tượng <strong>ống hút màu</strong> 💧 ở dưới cùng → rê chuột lên sân khấu và <strong>bấm thẳng vào bức tường</strong>. Scratch sẽ lấy chính xác màu đó. Chọn bằng mắt từ bảng màu rất dễ sai!</p>
+  </div>
+
+  <h2>Phần C — Khối của tôi</h2>
+  <div class="step" data-step="4">
+    <h4>Tự tạo khối "Về vạch xuất phát"</h4>
+    <p>Có 3 việc ta phải làm đi làm lại nhiều lần: đưa bóng về góc dưới trái, thu nhỏ bóng, quay bóng về hướng chuẩn. Thay vì kéo 3 khối ấy ở mỗi chỗ, ta <strong>gói chúng lại và đặt cho một cái tên</strong>.</p>
+    <ul style="color:var(--ink-soft)">
+      <li>Vào nhóm <strong>Khối của tôi</strong> (màu hồng) ở cuối cột trái → bấm <strong>Tạo một khối</strong>.</li>
+      <li>Gõ tên: <strong>Về vạch xuất phát</strong> → bấm OK.</li>
+      <li>Một khối mũ hồng <em>định nghĩa Về vạch xuất phát</em> xuất hiện trong vùng code. Ghép 3 khối vào dưới nó:</li>
+    </ul>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-myblocks">định nghĩa Về vạch xuất phát</div>
+      <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">25</span> %</div>
+      <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">-200</span> y: <span class="sb-inp">-140</span></div>
+      <div class="sb sb-palette-motion">hướng về phía <span class="sb-inp">90</span> độ</div>
+    </div>
+    <p>Từ giờ, mỗi khi cần làm cả 3 việc đó, con chỉ việc kéo ra <strong>một</strong> khối hồng duy nhất:</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-myblocks">Về vạch xuất phát</div>
+    </div>
+    <div class="box why">
+      <h4>🤔 Vì sao lập trình viên thật rất thích việc này?</h4>
+      <p>Giả sử sau này con muốn đổi chỗ xuất phát. Nếu con chép 3 khối đó ra 5 chỗ khác nhau, con phải đi sửa cả 5 chỗ — và chắc chắn sẽ quên mất một chỗ. Có khối của tôi thì chỉ cần sửa <strong>đúng một nơi</strong>, mọi chỗ gọi đến đều đổi theo. Đây chính là khái niệm <em>hàm</em> trong các ngôn ngữ lập trình lớn như Python hay JavaScript.</p>
+    </div>
+  </div>
+
+  <div class="step" data-step="5">
+    <h4>Kịch bản chính</h4>
+    <p>Bốn khối <em>nếu…thì</em> (cho 4 hướng), tất cả nằm trong một khối lặp mãi. Thêm phần kiểm tra chạm màu xanh lá ở cuối để biết khi nào người chơi tới đích:</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#4CBB5A"></span> ?</span> thì</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-events">truyền tin <span class="sb-drop">qua màn</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Sơ đồ đầy đủ của cả 4 hướng có ở phần dưới — con cứ nhân bản khối <em>nếu…thì</em> đầu tiên rồi sửa lại, như đã học ở bài 2.</p>
+  </div>
+
+  <div class="step" data-step="6">
+    <h4>Chuyển màn</h4>
+    <p>Khi nhận được tin <em>qua màn</em>, ta phải hỏi: đang ở màn mấy? Khối <strong>phông nền số</strong> (nhóm Hiển thị) cho biết đang dùng phông nền thứ mấy trong danh sách.</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">qua màn</span></div>
+      <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Magic Spell</span></div>
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-looks">phông nền số</span> = <span class="sb-inp">1</span></span> thì</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-looks">chuyển phông nền thành <span class="sb-drop">Màn 2</span></div>
+          <div class="sb sb-palette-myblocks">Về vạch xuất phát</div>
+        </div>
+        <div class="sb-c-else">nếu không</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-looks">nói <span class="sb-inp">Bạn thắng rồi! 🎉</span> trong <span class="sb-inp">3</span> giây</div>
+          <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Đọc thành lời: <em>"Nghe tin qua màn. Nếu đang ở Màn 1 thì sang Màn 2 và về vạch xuất phát. Còn không (tức là đã ở màn cuối) thì chúc mừng và kết thúc."</em></p>
+    <p>Thấy khối hồng <strong>Về vạch xuất phát</strong> xuất hiện lại lần nữa không? Đó chính là lợi ích của khối tự tạo.</p>
+  </div>
+
+  <h2>Sơ đồ đối chứng 🔍</h2>
+  <div class="diagram">
+    <h3>Toàn bộ kịch bản — nhân vật NguoiChoi</h3>
+    <p style="margin-bottom:6px">Nhân vật này có <strong>ba</strong> dãy khối tách rời nhau trong vùng code.</p>
+    <div class="diagram-grid">
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#FFBF00"></span>Kịch bản 1 — vòng lặp chính</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">chuyển phông nền thành <span class="sb-drop">Màn 1</span></div>
+          <div class="sb sb-palette-myblocks">Về vạch xuất phát</div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên lên</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">3</span></div>
+                  <div class="sb-c sb-palette-control">
+                    <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#111"></span> ?</span> thì</div>
+                    <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-3</span></div></div>
+                    <div class="sb-c-foot"></div>
+                  </div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên xuống</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-3</span></div>
+                  <div class="sb-c sb-palette-control">
+                    <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#111"></span> ?</span> thì</div>
+                    <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">3</span></div></div>
+                    <div class="sb-c-foot"></div>
+                  </div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên phải</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">3</span></div>
+                  <div class="sb-c sb-palette-control">
+                    <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#111"></span> ?</span> thì</div>
+                    <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">-3</span></div></div>
+                    <div class="sb-c-foot"></div>
+                  </div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên trái</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">-3</span></div>
+                  <div class="sb-c sb-palette-control">
+                    <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#111"></span> ?</span> thì</div>
+                    <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">3</span></div></div>
+                    <div class="sb-c-foot"></div>
+                  </div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm màu <span class="sb-swatch" style="background:#4CBB5A"></span> ?</span> thì</div>
+                <div class="sb-c-body"><div class="sb sb-palette-events">truyền tin <span class="sb-drop">qua màn</span></div></div>
+                <div class="sb-c-foot"></div>
+              </div>
+
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram-grid two" style="margin-top:18px">
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#FF6680"></span>Kịch bản 2 — khối của tôi</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-myblocks">định nghĩa Về vạch xuất phát</div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">25</span> %</div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">-200</span> y: <span class="sb-inp">-140</span></div>
+          <div class="sb sb-palette-motion">hướng về phía <span class="sb-inp">90</span> độ</div>
+        </div>
+      </div>
+
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#5CB1D6"></span>Kịch bản 3 — chuyển màn</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">qua màn</span></div>
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Magic Spell</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-looks">phông nền số</span> = <span class="sb-inp">1</span></span> thì</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-looks">chuyển phông nền thành <span class="sb-drop">Màn 2</span></div>
+              <div class="sb sb-palette-myblocks">Về vạch xuất phát</div>
+            </div>
+            <div class="sb-c-else">nếu không</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-looks">nói <span class="sb-inp">Bạn thắng rồi! 🎉</span> trong <span class="sb-inp">3</span> giây</div>
+              <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Mê cung nên trông thế nào</h3>
+    <div class="stage-mock" style="background:#FFF">
+      <div style="position:absolute; inset:0">
+        <div style="position:absolute; left:0; top:0; width:100%; height:7%; background:#111"></div>
+        <div style="position:absolute; left:0; bottom:0; width:100%; height:7%; background:#111"></div>
+        <div style="position:absolute; left:0; top:0; width:5%; height:100%; background:#111"></div>
+        <div style="position:absolute; right:0; top:0; width:5%; height:100%; background:#111"></div>
+        <div style="position:absolute; left:22%; top:7%; width:6%; height:56%; background:#111"></div>
+        <div style="position:absolute; left:44%; top:37%; width:6%; height:56%; background:#111"></div>
+        <div style="position:absolute; left:66%; top:7%; width:6%; height:56%; background:#111"></div>
+        <div style="position:absolute; right:5%; top:7%; width:13%; height:13%; background:#4CBB5A"></div>
+      </div>
+      <div class="pin" style="left:13%; top:80%; font-size:1.1rem">🔵<small>x:-200 y:-140</small></div>
+      <div class="pin" style="left:84%; top:14%; font-size:.72rem; color:#fff"><small style="color:#fff">ĐÍCH</small></div>
+    </div>
+    <p class="stage-caption">Tường đen bao quanh và chắn giữa, ô xanh lá là đích. Mê cung của con không cần giống hệt — miễn là tường kín và chỉ dùng một màu đen, một màu xanh.</p>
+
+    <h3>Tự chấm điểm</h3>
+    <ul class="checklist">
+      <li>Bấm cờ xanh: bóng nhỏ lại và nhảy về góc dưới bên trái, phông nền là Màn 1.</li>
+      <li>Giữ phím mũi tên — bóng lăn mượt theo đúng hướng.</li>
+      <li>Bóng <strong>bị tường chặn đứng</strong>, không xuyên qua và không bị rung giật.</li>
+      <li>Bóng không lọt ra ngoài rìa sân khấu (nhờ tường viền).</li>
+      <li>Chạm ô xanh lá: nghe tiếng nhạc, phông nền đổi sang Màn 2, bóng về lại vạch xuất phát.</li>
+      <li>Về đích ở Màn 2: hiện "Bạn thắng rồi! 🎉" rồi trò chơi dừng hẳn.</li>
+      <li>Trong vùng code của NguoiChoi có đúng <strong>3 dãy khối</strong> tách rời nhau.</li>
+    </ul>
+
+    <div class="box warn" style="margin-top:18px">
+      <h4>⚠️ Bóng xuyên tường? Kiểm tra 3 thứ này</h4>
+      <ul>
+        <li><strong>Màu lấy sai.</strong> Dùng ống hút màu 💧 bấm thẳng vào tường thay vì chọn bằng mắt.</li>
+        <li><strong>Bước đi quá to.</strong> Nếu dùng số 10 thay vì 3, bóng có thể nhảy hẳn qua bức tường mỏng. Giảm xuống 3, hoặc vẽ tường dày hơn.</li>
+        <li><strong>Khối "nếu chạm màu" đặt sai chỗ.</strong> Nó phải nằm <em>bên trong</em> khối nếu-phím, và <em>ngay sau</em> khối di chuyển — không phải ở ngoài cùng.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Thử thách thêm 🏆</h2>
+  <div class="challenge">
+    <ol>
+      <li>Vẽ thêm <strong>Màn 3</strong> và sửa kịch bản 3 để đi qua được cả ba màn. Gợi ý: thêm một khối <em>nếu…thì</em> nữa, hỏi <em>phông nền số = 2</em>.</li>
+      <li>Thêm <strong>bẫy màu đỏ</strong>: vẽ vài ô đỏ trong mê cung, chạm vào thì <em>Về vạch xuất phát</em>.</li>
+      <li>Thêm <strong>đồng hồ bấm giờ</strong> như bài 4, xem con phá đảo mất bao lâu.</li>
+      <li>Thêm nhân vật <strong>chìa khoá</strong> phải nhặt trước khi cửa đích mở ra. Gợi ý: một biến <em>Có chìa</em> đặt bằng 0 hoặc 1.</li>
+      <li><strong>Khó hơn:</strong> tạo thêm khối của tôi tên <em>Đi theo hướng (hướng)</em> có <strong>tham số</strong>, để gộp cả bốn khối nếu-phím thành bốn dòng gọn gàng.</li>
+    </ol>
+    <details>
+      <summary>Gợi ý câu 5 — khối có tham số</summary>
+      <p>Lúc tạo khối, bấm <strong>Thêm một dữ liệu vào (số hoặc chữ)</strong>. Khối của con sẽ có một ô trống để điền vào, giống như ô số trong khối <em>di chuyển … bước</em>. Bên trong phần định nghĩa, con kéo cái ô đó ra dùng như một biến. Đây chính xác là khái niệm <strong>tham số của hàm</strong> — thứ mà học sinh học Python phải mất vài tuần mới gặp!</p>
+    </details>
+  </div>
+
+  <div class="box goal">
+    <h4>📌 Ghi nhớ của bài 5</h4>
+    <p><strong>đang chạm màu</strong> biến hình vẽ trên phông nền thành vật cản thật. Bí kíp va chạm là <strong>đi rồi lùi lại</strong>. <strong>Khối của tôi</strong> giúp gói nhiều việc thành một cái tên dễ nhớ và chỉ phải sửa ở một nơi. Và <strong>phông nền + tin nhắn</strong> là cách làm nhiều màn chơi.</p>
+  </div>
+
+  <div class="box fun">
+    <h4>🎓 Hết phần cơ bản rồi — con đã học được gì?</h4>
+    <p>Qua 5 bài, con đã dùng đủ <strong>chín nhóm khối</strong> của Scratch và nắm được những khái niệm mà lập trình viên thật dùng hằng ngày: tuần tự, vòng lặp, điều kiện, biến, sự kiện, truyền tin, và hàm. Đổi sang Python hay JavaScript sau này, con sẽ gặp lại <em>đúng những ý tưởng đó</em> — chỉ khác là gõ chữ thay vì kéo khối.</p>
+    <p style="margin-bottom:0">Việc nên làm tiếp theo: lấy một trong năm trò chơi này và <strong>chế biến lại theo ý con</strong> — đổi nhân vật, đổi luật chơi, thêm màn. Học lập trình giỏi nhất là bằng cách nghịch.</p>
+  </div>
+
+  <nav class="lesson-nav">
+    <a href="/scratch/bai-04-dap-chuot-chui.html">← Bài 4: Đập chuột chũi</a>
+    <a href="/scratch/">Về danh sách bài học →</a>
+  </nav>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+</body>
+</html>

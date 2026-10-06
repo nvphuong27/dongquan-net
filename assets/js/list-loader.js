@@ -13,6 +13,8 @@
   const target = document.getElementById(targetId);
   const searchInput = document.getElementById(scriptTag.getAttribute('data-search'));
   const countBox = document.getElementById(scriptTag.getAttribute('data-count'));
+  // data-noun — danh từ hiển thị ở ô đếm kết quả (mặc định "chủ điểm")
+  const noun = scriptTag.getAttribute('data-noun') || 'chủ điểm';
 
   function escapeHtml(str) {
     const d = document.createElement('div');
@@ -57,15 +59,15 @@
       const matched = items.filter((_, i) => words.every(w => haystacks[i].includes(w)));
 
       if (matched.length === 0) {
-        target.innerHTML = '<p class="empty-state">Không tìm thấy chủ điểm nào khớp — thử từ khoá khác nhé!</p>';
+        target.innerHTML = '<p class="empty-state">Không tìm thấy mục nào khớp — thử từ khoá khác nhé!</p>';
       } else {
         target.innerHTML = matched.map(renderItem).join('');
       }
 
       if (countBox) {
         countBox.textContent = words.length === 0
-          ? `${items.length} chủ điểm`
-          : `${matched.length}/${items.length} chủ điểm khớp với "${searchInput.value.trim()}"`;
+          ? `${items.length} ${noun}`
+          : `${matched.length}/${items.length} ${noun} khớp với "${searchInput.value.trim()}"`;
       }
     }
 

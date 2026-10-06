@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch-ĐQ — Đông Quân's English Corner</title>
+<meta name="description" content="Giáo trình Scratch cơ bản cho trẻ em: học lập trình qua các trò chơi vui, hướng dẫn từng bước và sơ đồ khối để đối chứng.">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+<style>
+  .intro-cards{
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+    max-width: var(--max-width); margin: 0 auto; padding: 0 24px 8px;
+  }
+  @media (min-width: 760px){ .intro-cards{ grid-template-columns: repeat(3, 1fr); } }
+  .intro-cards .box{ margin: 0; }
+  .start-here{
+    max-width: var(--max-width); margin: 0 auto; padding: 8px 24px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <a class="back-home-link" href="/">← Home</a>
+  <p class="eyebrow">Scratch-ĐQ</p>
+  <h1>Học lập trình Scratch 🐱</h1>
+  <p>Giáo trình cơ bản dành cho trẻ mới bắt đầu. Mỗi bài là <strong>một trò chơi hoàn chỉnh</strong>, có hướng dẫn từng bước, giải thích <em>vì sao</em> làm vậy, và cuối bài có <strong>sơ đồ khối đầy đủ</strong> để con tự đối chứng với màn hình của mình.</p>
+</div>
+
+<div class="start-here">
+  <div class="box goal">
+    <h4>Trước khi bắt đầu — chuẩn bị 2 phút</h4>
+    <ol>
+      <li>Mở trình duyệt, vào <a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener"><strong>scratch.mit.edu</strong></a> → bấm nút <strong>Tạo</strong> (Create).</li>
+      <li>Nhìn góc trên cùng bên trái, bấm vào quả địa cầu 🌐 → chọn <strong>Tiếng Việt</strong>. Lúc này tên khối sẽ giống hệt trong bài học.</li>
+      <li>Có tài khoản Scratch thì nhớ bấm <strong>Lưu ngay</strong> sau mỗi bài. Chưa có tài khoản cũng học được bình thường — chỉ cần đừng tắt tab giữa chừng.</li>
+      <li>Dùng máy tính hoặc iPad có bàn phím sẽ dễ hơn, vì nhiều trò chơi điều khiển bằng phím mũi tên.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="intro-cards">
+  <div class="box why">
+    <h4>🧩 Học bằng cách ghép khối</h4>
+    <p>Scratch không bắt gõ chữ. Con kéo các khối lệnh ghép lại như xếp Lego — khối nào ghép sai thì tự động không dính vào nhau.</p>
+  </div>
+  <div class="box fun">
+    <h4>🎮 Mỗi bài một trò chơi</h4>
+    <p>Học xong bài nào là có ngay một trò chơi chạy được để khoe với ba mẹ và bạn bè.</p>
+  </div>
+  <div class="box tip">
+    <h4>🔍 Có sơ đồ đối chứng</h4>
+    <p>Cuối mỗi bài có hình vẽ toàn bộ khối lệnh. Nếu trò chơi chạy sai, con so từng khối với sơ đồ là tìm ra lỗi.</p>
+  </div>
+</div>
+
+<div class="page-head" style="padding-top:34px; padding-bottom:0;">
+  <h2>Danh sách bài học</h2>
+  <p>Nên học lần lượt từ Bài 1, vì bài sau dùng lại những khối đã học ở bài trước.</p>
+</div>
+
+<div class="list-search">
+  <label class="search-field" for="scratch-search">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="scratch-search" disabled
+           placeholder="Tìm bài học… (ví dụ: mèo, hứng táo, mê cung)"
+           aria-label="Tìm bài học Scratch theo tiêu đề"
+           autocomplete="off">
+  </label>
+  <p class="search-count" id="scratch-count" role="status" aria-live="polite"></p>
+</div>
+
+<div class="item-list" id="item-list">
+  <p class="empty-state">Loading list…</p>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+
+<script src="/assets/js/list-loader.js" data-folder="/scratch/" data-target="item-list" data-noun="bài học" data-search="scratch-search" data-count="scratch-count"></script>
+</body>
+</html>

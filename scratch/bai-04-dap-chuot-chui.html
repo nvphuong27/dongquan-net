@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 4 — Đập chuột chũi (truyền tin và đồng hồ)</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson">
+  <p class="back-link"><a href="/scratch/">← Quay lại danh sách bài học</a></p>
+  <p class="eyebrow">Scratch · Bài 4</p>
+  <h1>Đập chuột chũi 🔨🐹</h1>
+  <p class="lead">Ba chú chuột chũi thi nhau thò đầu lên rồi lặn mất. Con có 30 giây để bấm trúng càng nhiều càng tốt! Bài này học cách <strong>các nhân vật nói chuyện với nhau</strong> bằng tin nhắn.</p>
+
+  <div class="meta-strip">
+    <span>⏱️ 50–60 phút</span>
+    <span>🎯 Mức: Cơ bản +</span>
+    <span>🧩 4 nhân vật</span>
+    <span>📣 Có truyền tin</span>
+  </div>
+
+  <div class="box goal">
+    <h4>Học xong bài này con sẽ biết</h4>
+    <ul>
+      <li>Khối mũ <strong>khi nhân vật này được nhấn</strong> — bắt sự kiện bấm chuột.</li>
+      <li><strong>ẩn</strong> / <strong>hiện</strong> — làm nhân vật biến mất rồi hiện lại.</li>
+      <li><strong>Truyền tin</strong> (broadcast) — cách một nhân vật hô to cho tất cả cùng nghe.</li>
+      <li>Làm <strong>đồng hồ đếm ngược</strong>.</li>
+      <li>Nhân bản cả một nhân vật để khỏi viết lại code.</li>
+      <li>Phân biệt <em>dừng tất cả</em> và <em>dừng các kịch bản khác của nhân vật này</em>.</li>
+    </ul>
+  </div>
+
+  <h2>Phần A — Truyền tin là gì?</h2>
+  <p>Trong bài 2 và 3, mỗi nhân vật lo việc của riêng mình. Nhưng trò chơi này cần cả nhóm phối hợp: khi hết 30 giây thì <strong>tất cả</strong> chuột chũi phải lặn xuống cùng lúc.</p>
+  <p>Giải pháp của Scratch là <strong>truyền tin</strong>. Hãy tưởng tượng một người cầm loa hô to: <em>"HẾT GIỜ!"</em>. Ai nghe thấy tiếng hô đó thì tự làm phần việc của mình.</p>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>Khối</th><th>Nhóm</th><th>Nghĩa</th></tr>
+    <tr><td><strong>truyền tin [hết giờ]</strong></td><td>Sự kiện</td><td>Hô to lên. Hô xong là chạy tiếp ngay, không đợi ai.</td></tr>
+    <tr><td><strong>truyền tin [hết giờ] và đợi</strong></td><td>Sự kiện</td><td>Hô to rồi <em>đứng chờ</em> tất cả mọi người làm xong mới chạy tiếp.</td></tr>
+    <tr><td><strong>khi tôi nhận [hết giờ]</strong></td><td>Sự kiện (khối mũ)</td><td>Tai nghe. Có tiếng hô đúng tên này thì kịch bản bên dưới chạy.</td></tr>
+  </table>
+  </div>
+
+  <div class="box tip">
+    <h4>💡 Một nhân vật có thể có nhiều khối mũ</h4>
+    <p>Chuột chũi sẽ có <strong>ba</strong> kịch bản riêng biệt, mỗi cái một khối mũ: một cái lo thò lên thụt xuống, một cái lo lúc bị bấm trúng, một cái lo lúc hết giờ. Chúng chạy <strong>song song</strong> — đây là điều mà Scratch làm rất giỏi.</p>
+  </div>
+
+  <h2>Phần B — Làm từng bước</h2>
+
+  <div class="step" data-step="1">
+    <h4>Chuẩn bị</h4>
+    <ul style="color:var(--ink-soft)">
+      <li>Xoá chú mèo. Thêm nhân vật <strong>Mouse1</strong> (hoặc Hedgehog, Monkey — con nào cũng được) và đổi tên thành <strong>Chuot1</strong>.</li>
+      <li>Thêm nhân vật <strong>Button3</strong> hoặc bất kỳ, đổi tên thành <strong>TrongTai</strong> — bạn này lo đếm giờ. Rồi bấm khối <em>ẩn</em> cho bạn ấy khỏi che màn hình.</li>
+      <li>Chọn phông nền <strong>Farm</strong> hoặc <strong>Desert</strong>.</li>
+      <li>Tạo hai biến: <strong>Điểm</strong> và <strong>Thời gian</strong>.</li>
+      <li>Tạo một tin nhắn: vào <strong>Sự kiện</strong> → khối <em>truyền tin</em> → bấm mũi tên → <strong>Tin nhắn mới</strong> → gõ <strong>hết giờ</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="step" data-step="2">
+    <h4>Chuột chũi thò lên thụt xuống</h4>
+    <p>Chọn nhân vật <strong>Chuot1</strong>. Kịch bản thứ nhất:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+      <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">60</span> %</div>
+      <div class="sb sb-palette-looks">ẩn</div>
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-control">đợi <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">0.4</span> đến <span class="sb-inp">2</span></span> giây</div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-180</span> đến <span class="sb-inp">180</span></span> y: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-120</span> đến <span class="sb-inp">100</span></span></div>
+          <div class="sb sb-palette-looks">hiện</div>
+          <div class="sb sb-palette-control">đợi <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">0.5</span> đến <span class="sb-inp">1.2</span></span> giây</div>
+          <div class="sb sb-palette-looks">ẩn</div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p><strong>Thứ tự rất quan trọng:</strong> phải <em>đi tới chỗ mới</em> <strong>trước</strong> rồi mới <em>hiện</em>. Nếu làm ngược lại, người chơi sẽ thấy chuột nhấp nháy ở chỗ cũ rồi mới nhảy sang chỗ mới — trông rất xấu.</p>
+    <p>Hai khối <em>đợi ngẫu nhiên</em> làm cho chuột lên xuống không theo nhịp đều, nên không ai đoán trước được.</p>
+  </div>
+
+  <div class="step" data-step="3">
+    <h4>Bấm trúng chuột thì cộng điểm</h4>
+    <p>Vẫn ở nhân vật Chuot1, kéo ra <strong>một khối mũ mới</strong> và đặt ở chỗ trống trong vùng code (tách rời hẳn kịch bản trên):</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi nhân vật này được nhấn</div>
+      <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+      <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Điểm</span> một lượng <span class="sb-inp">1</span></div>
+      <div class="sb sb-palette-looks">ẩn</div>
+    </div>
+    <div class="box why">
+      <h4>🤔 Vì sao không cần hỏi "chuột có đang hiện không?"</h4>
+      <p>Vì Scratch đã lo giúp rồi: nhân vật đang <em>ẩn</em> thì không thể bấm vào được. Người chơi chỉ ghi điểm khi bấm đúng lúc chuột đang ló đầu lên — đúng như luật chơi, mà ta không phải viết thêm dòng nào.</p>
+      <p>Khối <em>ẩn</em> ở cuối làm chuột lặn ngay khi bị đập trúng, giống trò chơi thật.</p>
+    </div>
+  </div>
+
+  <div class="step" data-step="4">
+    <h4>Nhân bản thành 3 chú chuột</h4>
+    <p>Đây là mẹo tiết kiệm công sức lớn nhất của bài này. Trong danh sách nhân vật, <strong>bấm chuột phải vào Chuot1 → Nhân bản</strong>. Làm hai lần, con có Chuot2 và Chuot3 — <em>mang theo toàn bộ code</em>.</p>
+    <p>Ba chú chuột giờ chạy độc lập với nhau. Vì mỗi chú có khối <em>lấy ngẫu nhiên</em> riêng, chúng sẽ thò lên ở ba chỗ khác nhau vào ba thời điểm khác nhau — tự nhiên như thật mà không cần viết thêm gì.</p>
+    <div class="box warn">
+      <h4>⚠️ Nhớ nhân bản ĐÚNG LÚC</h4>
+      <p>Hãy nhân bản <strong>sau khi</strong> code của Chuot1 đã hoàn chỉnh. Nếu nhân bản sớm rồi mới sửa code, con sẽ phải sửa lại y hệt ở cả 3 nhân vật — mất công gấp ba.</p>
+    </div>
+  </div>
+
+  <div class="step" data-step="5">
+    <h4>Đồng hồ đếm ngược 30 giây</h4>
+    <p>Chọn nhân vật <strong>TrongTai</strong>. Bạn này không cần hiện hình, chỉ lo đếm giờ và thổi còi khi hết giờ.</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+      <div class="sb sb-palette-looks">ẩn</div>
+      <div class="sb sb-palette-variables">đặt <span class="sb-drop">Điểm</span> thành <span class="sb-inp">0</span></div>
+      <div class="sb sb-palette-variables">đặt <span class="sb-drop">Thời gian</span> thành <span class="sb-inp">30</span></div>
+      <div class="sb-c sb-palette-control">
+        <div class="sb sb-c-head sb-palette-control">lặp cho đến khi <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-variables">Thời gian</span> = <span class="sb-inp">0</span></span></div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-control">đợi <span class="sb-inp">1</span> giây</div>
+          <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Thời gian</span> một lượng <span class="sb-inp">-1</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+      <div class="sb sb-palette-events">truyền tin <span class="sb-drop">hết giờ</span></div>
+    </div>
+    <p>Đọc kịch bản này thành lời: <em>"Đặt đồng hồ 30 giây. Cứ đợi 1 giây rồi bớt đi 1, làm mãi cho đến khi còn 0. Lúc đó thì hô to: HẾT GIỜ!"</em></p>
+  </div>
+
+  <div class="step" data-step="6">
+    <h4>Ai nghe tiếng hô thì làm gì?</h4>
+    <p>Vẫn ở <strong>TrongTai</strong>, thêm kịch bản thứ hai — công bố kết quả:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">hết giờ</span></div>
+      <div class="sb sb-palette-looks">hiện</div>
+      <div class="sb sb-palette-looks">nói <span class="sb-ov sb-palette-operators">kết hợp <span class="sb-inp">Hết giờ! Bạn đập trúng </span> và <span class="sb-ov sb-palette-variables">Điểm</span></span> trong <span class="sb-inp">4</span> giây</div>
+      <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+    </div>
+    <p>Rồi sang <strong>từng chú chuột</strong> (Chuot1, Chuot2, Chuot3) thêm kịch bản thứ ba cho mỗi chú:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">hết giờ</span></div>
+      <div class="sb sb-palette-control">dừng <span class="sb-drop">các kịch bản khác của nhân vật này</span></div>
+      <div class="sb sb-palette-looks">ẩn</div>
+    </div>
+    <div class="box why">
+      <h4>🤔 Ba kiểu khối "dừng"</h4>
+      <ul>
+        <li><strong>dừng tất cả</strong> — tắt sạch mọi thứ trong trò chơi. Dùng ở màn kết thúc.</li>
+        <li><strong>dừng kịch bản này</strong> — chỉ dừng đúng dãy khối đang chạy.</li>
+        <li><strong>dừng các kịch bản khác của nhân vật này</strong> — dừng mấy kịch bản <em>kia</em> của chính mình, nhưng kịch bản đang chạy vẫn chạy tiếp. Đúng thứ ta cần: chuột phải ngừng thò lên (kịch bản 1), nhưng vẫn phải kịp chạy khối <em>ẩn</em> ngay bên dưới.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Sơ đồ đối chứng 🔍</h2>
+  <div class="diagram">
+    <h3>Toàn bộ kịch bản</h3>
+    <p style="margin-bottom:6px">Chuot1, Chuot2, Chuot3 có code <strong>giống hệt nhau</strong> (nhờ nhân bản). TrongTai có code riêng.</p>
+    <div class="diagram-grid two">
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#9966FF"></span>🐹 Chuot1 · Chuot2 · Chuot3 — kịch bản 1</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">60</span> %</div>
+          <div class="sb sb-palette-looks">ẩn</div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-control">đợi <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">0.4</span> đến <span class="sb-inp">2</span></span> giây</div>
+              <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-180</span> đến <span class="sb-inp">180</span></span> y: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-120</span> đến <span class="sb-inp">100</span></span></div>
+              <div class="sb sb-palette-looks">hiện</div>
+              <div class="sb sb-palette-control">đợi <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">0.5</span> đến <span class="sb-inp">1.2</span></span> giây</div>
+              <div class="sb sb-palette-looks">ẩn</div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+
+        <p class="who" style="margin-top:18px"><span class="dot" style="background:#9966FF"></span>Chuot — kịch bản 2</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi nhân vật này được nhấn</div>
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+          <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Điểm</span> một lượng <span class="sb-inp">1</span></div>
+          <div class="sb sb-palette-looks">ẩn</div>
+        </div>
+
+        <p class="who" style="margin-top:18px"><span class="dot" style="background:#9966FF"></span>Chuot — kịch bản 3</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">hết giờ</span></div>
+          <div class="sb sb-palette-control">dừng <span class="sb-drop">các kịch bản khác của nhân vật này</span></div>
+          <div class="sb sb-palette-looks">ẩn</div>
+        </div>
+      </div>
+
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#5CB1D6"></span>⏱️ TrongTai — kịch bản 1</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">ẩn</div>
+          <div class="sb sb-palette-variables">đặt <span class="sb-drop">Điểm</span> thành <span class="sb-inp">0</span></div>
+          <div class="sb sb-palette-variables">đặt <span class="sb-drop">Thời gian</span> thành <span class="sb-inp">30</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp cho đến khi <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-variables">Thời gian</span> = <span class="sb-inp">0</span></span></div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-control">đợi <span class="sb-inp">1</span> giây</div>
+              <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Thời gian</span> một lượng <span class="sb-inp">-1</span></div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+          <div class="sb sb-palette-events">truyền tin <span class="sb-drop">hết giờ</span></div>
+        </div>
+
+        <p class="who" style="margin-top:18px"><span class="dot" style="background:#5CB1D6"></span>TrongTai — kịch bản 2</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi tôi nhận <span class="sb-drop">hết giờ</span></div>
+          <div class="sb sb-palette-looks">hiện</div>
+          <div class="sb sb-palette-looks">nói <span class="sb-ov sb-palette-operators">kết hợp <span class="sb-inp">Hết giờ! Bạn đập trúng </span> và <span class="sb-ov sb-palette-variables">Điểm</span></span> trong <span class="sb-inp">4</span> giây</div>
+          <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Dòng chảy của tin nhắn</h3>
+    <div class="script-card" style="margin-top:10px">
+      <div class="sb-stack" style="display:block; max-width:360px">
+        <div class="sb sb-palette-sensing">⏱️ TrongTai đếm: 30 → 29 → … → 0</div>
+        <div style="text-align:center; font-size:1.3rem; color:var(--ink-faint); margin:2px 0 6px">↓</div>
+        <div class="sb sb-palette-events">📣 truyền tin "hết giờ" — hô to một tiếng</div>
+        <div style="text-align:center; font-size:1.3rem; color:var(--ink-faint); margin:2px 0 6px"><span style="font-size:.85rem">↓ ↓ ↓ ↓ (ai cũng nghe thấy)</span></div>
+        <div class="sb sb-palette-looks">🐹 Chuot1 → ngừng thò lên, ẩn đi</div>
+        <div class="sb sb-palette-looks">🐹 Chuot2 → ngừng thò lên, ẩn đi</div>
+        <div class="sb sb-palette-looks">🐹 Chuot3 → ngừng thò lên, ẩn đi</div>
+        <div class="sb sb-palette-looks">⏱️ TrongTai → hiện ra, công bố điểm, dừng tất cả</div>
+      </div>
+    </div>
+    <p class="stage-caption">Chỉ <strong>một</strong> khối "truyền tin" mà bốn nhân vật cùng phản ứng. Đó là sức mạnh của tin nhắn.</p>
+
+    <h3>Sân khấu lúc đang chơi</h3>
+    <div class="stage-mock" style="background:#E8F5D8">
+      <div class="pin" style="left:24%; top:38%">🐹<small>đang ló lên</small></div>
+      <div class="pin" style="left:68%; top:66%">🐹<small>đang ló lên</small></div>
+      <div class="pin" style="left:48%; top:52%; opacity:.22">🐹<small>đang ẩn</small></div>
+      <div style="position:absolute; left:8px; top:8px; font-family:var(--font-mono); font-size:.62rem; background:#FF8C1A; color:#fff; padding:3px 8px; border-radius:4px">Điểm 12</div>
+      <div style="position:absolute; left:8px; top:30px; font-family:var(--font-mono); font-size:.62rem; background:#FF8C1A; color:#fff; padding:3px 8px; border-radius:4px">Thời gian 18</div>
+    </div>
+    <p class="stage-caption">Số chuột đang hiện lúc nào cũng khác nhau — đó là vì ba chú chạy độc lập với thời gian ngẫu nhiên riêng.</p>
+
+    <h3>Tự chấm điểm</h3>
+    <ul class="checklist">
+      <li>Bấm cờ xanh: <strong>Điểm</strong> về 0, <strong>Thời gian</strong> về 30 rồi tụt dần mỗi giây.</li>
+      <li>Ba chú chuột thò lên ở những chỗ khác nhau, không cùng lúc.</li>
+      <li>Bấm trúng chuột: nghe "pop", Điểm +1, chuột lặn ngay lập tức.</li>
+      <li>Bấm vào chỗ trống hoặc chuột đang ẩn thì <strong>không</strong> được điểm.</li>
+      <li>Thời gian về 0: tất cả chuột biến mất, TrongTai hiện ra báo điểm.</li>
+      <li>Sau khi báo điểm, trò chơi dừng hẳn — không còn chuột nào thò lên nữa.</li>
+    </ul>
+  </div>
+
+  <h2>Thử thách thêm 🏆</h2>
+  <div class="challenge">
+    <ol>
+      <li>Thêm chú chuột thứ 4 và thứ 5 — chỉ cần nhân bản, không cần viết thêm khối nào.</li>
+      <li>Thêm một con <strong>mèo xấu</strong>: bấm trúng nó thì <em>thay đổi Điểm một lượng −3</em>. Nhân bản từ chuột rồi đổi trang phục và sửa lại con số.</li>
+      <li>Càng về cuối càng nhanh: tạo tin nhắn mới <em>tăng tốc</em>, TrongTai truyền tin này khi Thời gian còn 10, chuột nhận được thì giảm thời gian đợi.</li>
+      <li>Thêm màn hình "Bắt đầu": một nhân vật nút bấm, <em>khi nhân vật này được nhấn → truyền tin [bắt đầu]</em>, và mọi thứ chờ tin nhắn đó mới chạy.</li>
+      <li><strong>Khó hơn:</strong> làm thanh thời gian chạy thụt dần bằng cách cho một nhân vật hình chữ nhật <em>đặt kích thước thành (Thời gian × 3) %</em>.</li>
+    </ol>
+    <details>
+      <summary>Vì sao dùng "dừng các kịch bản khác của nhân vật này" mà không phải "dừng tất cả"?</summary>
+      <p>Nếu chuột dùng <em>dừng tất cả</em>, nó sẽ tắt luôn kịch bản của TrongTai đang chuẩn bị công bố điểm — người chơi chẳng bao giờ thấy kết quả. Phải để TrongTai là người duy nhất ra lệnh <em>dừng tất cả</em>, và chỉ ra lệnh ấy <strong>sau khi</strong> đã nói xong câu kết.</p>
+    </details>
+  </div>
+
+  <div class="box goal">
+    <h4>📌 Ghi nhớ của bài 4</h4>
+    <p><strong>Truyền tin</strong> là cách các nhân vật phối hợp với nhau: một bên hô, nhiều bên cùng nghe. Một nhân vật có thể có <strong>nhiều khối mũ</strong> chạy song song. <strong>Nhân bản nhân vật</strong> giúp nhân đôi cả code chỉ bằng một cú chuột phải. Và luôn chọn đúng kiểu khối <strong>dừng</strong>.</p>
+  </div>
+
+  <nav class="lesson-nav">
+    <a href="/scratch/bai-03-hung-tao.html">← Bài 3: Hứng táo</a>
+    <a href="/scratch/bai-05-me-cung.html">Bài 5: Mê cung →</a>
+  </nav>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+</body>
+</html>

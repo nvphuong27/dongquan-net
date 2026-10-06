@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 1 — Mèo nhảy múa (làm quen Scratch)</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson">
+  <p class="back-link"><a href="/scratch/">← Quay lại danh sách bài học</a></p>
+  <p class="eyebrow">Scratch · Bài 1</p>
+  <h1>Mèo nhảy múa 🐱💃</h1>
+  <p class="lead">Bài đầu tiên! Con sẽ làm quen với màn hình Scratch và dạy chú mèo biết nói, biết đi, biết xoay và biết kêu — tất cả chỉ bằng cách kéo thả vài khối lệnh.</p>
+
+  <div class="meta-strip">
+    <span>⏱️ 30–40 phút</span>
+    <span>🎯 Mức: Mới bắt đầu</span>
+    <span>🧩 5 nhóm khối</span>
+  </div>
+
+  <div class="box goal">
+    <h4>Học xong bài này con sẽ biết</h4>
+    <ul>
+      <li>Màn hình Scratch có những khu nào, mỗi khu để làm gì.</li>
+      <li>Khối <strong>mũ</strong> là gì và vì sao mọi chương trình đều phải bắt đầu bằng nó.</li>
+      <li>Máy tính chạy lệnh <strong>từ trên xuống dưới</strong>, lần lượt từng khối một.</li>
+      <li>Dùng khối <strong>lặp lại</strong> để khỏi phải kéo cùng một khối 10 lần.</li>
+      <li>Nhóm khối Sự kiện, Chuyển động, Hiển thị, Âm thanh, Điều khiển.</li>
+    </ul>
+  </div>
+
+  <h2>Phần A — Nhìn quanh màn hình Scratch</h2>
+  <p>Mở <a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener">scratch.mit.edu</a> → bấm <strong>Tạo</strong>. Màn hình chia làm 4 khu. Con hãy chỉ tay vào từng khu và đọc to tên của nó:</p>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>Khu</th><th>Nằm ở đâu</th><th>Để làm gì</th></tr>
+    <tr><td><strong>Sân khấu</strong><br>(Stage)</td><td>Góc trên bên phải, khung trắng hình chữ nhật</td><td>Nơi trò chơi diễn ra. Mọi thứ con lập trình sẽ hiện ra ở đây.</td></tr>
+    <tr><td><strong>Danh sách nhân vật</strong><br>(Sprite)</td><td>Ngay dưới sân khấu</td><td>Chứa các nhân vật. Lúc đầu chỉ có một chú mèo tên <em>Sprite1</em>.</td></tr>
+    <tr><td><strong>Hộp khối lệnh</strong></td><td>Cột bên trái, nhiều màu</td><td>Kho chứa tất cả khối lệnh, chia theo màu: xanh dương = Chuyển động, tím = Hiển thị…</td></tr>
+    <tr><td><strong>Vùng code</strong></td><td>Khoảng trống lớn ở giữa</td><td>Nơi con <em>kéo khối vào</em> và ghép chúng lại với nhau.</td></tr>
+  </table>
+  </div>
+
+  <div class="box tip">
+    <h4>💡 Mẹo nhớ màu khối</h4>
+    <p>Màu của khối cho biết nó thuộc nhóm nào. Cần khối đi chuyển thì tìm màu <strong style="color:#4C97FF">xanh dương</strong>; cần khối nói chuyện thì tìm màu <strong style="color:#9966FF">tím</strong>. Trong bài học, khối cũng được tô đúng màu như vậy để con dễ tìm.</p>
+  </div>
+
+  <div class="legend">
+    <span style="background:#FFBF00">Sự kiện</span>
+    <span style="background:#4C97FF">Chuyển động</span>
+    <span style="background:#9966FF">Hiển thị</span>
+    <span style="background:#CF63CF">Âm thanh</span>
+    <span style="background:#FFAB19">Điều khiển</span>
+  </div>
+
+  <h2>Phần B — Làm từng bước</h2>
+
+  <div class="step" data-step="1">
+    <h4>Đặt khối mũ xuống trước</h4>
+    <p>Bấm vào nhóm <strong>Sự kiện</strong> (màu vàng) ở cột trái. Kéo khối này vào vùng code:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+    </div>
+    <p><strong>Vì sao phải có nó?</strong> Khối này hình cái mũ — nó là <em>công tắc bật</em>. Nếu không có nó, con bấm lá cờ xanh sẽ chẳng có gì xảy ra, vì máy tính không biết lúc nào thì bắt đầu chạy. Mọi kịch bản trong Scratch <strong>luôn luôn</strong> bắt đầu bằng một khối mũ.</p>
+  </div>
+
+  <div class="step" data-step="2">
+    <h4>Cho mèo chào một câu</h4>
+    <p>Sang nhóm <strong>Hiển thị</strong> (màu tím). Kéo khối <em>nói … trong … giây</em> và ghép vào <strong>ngay dưới</strong> khối mũ — kéo lại gần cho đến khi thấy vệt bóng trắng xuất hiện thì thả tay ra.</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+      <div class="sb sb-palette-looks">nói <span class="sb-inp">Xem mình nhảy nè!</span> trong <span class="sb-inp">2</span> giây</div>
+    </div>
+    <p>Bấm vào ô chữ <em>Hello!</em> rồi gõ đè lên thành <strong>Xem mình nhảy nè!</strong>. Giờ bấm lá cờ xanh <span class="sb-flag">⚑</span> ở góc trên sân khấu — mèo sẽ hiện bong bóng thoại!</p>
+  </div>
+
+  <div class="step" data-step="3">
+    <h4>Cho mèo bước đi</h4>
+    <p>Sang nhóm <strong>Chuyển động</strong> (xanh dương), ghép tiếp hai khối:</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">50</span> bước</div>
+      <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">-50</span> bước</div>
+    </div>
+    <p>Số <strong>50</strong> là đi tới 50 bước. Số <strong>âm</strong> (-50) là đi lùi lại 50 bước. Con thử đổi 50 thành 200 xem mèo đi xa cỡ nào nhé.</p>
+  </div>
+
+  <div class="step" data-step="4">
+    <h4>Dạy mèo nhảy múa — dùng khối lặp lại</h4>
+    <p>Muốn mèo nhún nhảy 10 cái, con <em>có thể</em> kéo 10 khối giống nhau… nhưng mỏi tay lắm. Lập trình viên không làm vậy. Hãy dùng khối <strong>lặp lại</strong> ở nhóm <strong>Điều khiển</strong> (màu cam).</p>
+    <p>Kéo khối <em>lặp lại 10</em> vào, rồi thả 3 khối sau vào <strong>bên trong bụng chữ C</strong> của nó:</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">10</span></div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-looks">trang phục kế tiếp</div>
+          <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">20</span> bước</div>
+          <div class="sb sb-palette-control">đợi <span class="sb-inp">0.2</span> giây</div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p><strong>Giải thích từng khối:</strong></p>
+    <ul style="color:var(--ink-soft)">
+      <li><strong>trang phục kế tiếp</strong> — chú mèo có sẵn 2 bộ trang phục (hai dáng chân khác nhau). Đổi qua đổi lại thật nhanh trông như đang bước đi.</li>
+      <li><strong>di chuyển 20 bước</strong> — nhích tới một chút cho giống đi thật.</li>
+      <li><strong>đợi 0.2 giây</strong> — rất quan trọng! Máy tính chạy nhanh khủng khiếp. Không có khối đợi thì 10 vòng lặp xong trong chớp mắt, mắt con không kịp nhìn thấy gì.</li>
+    </ul>
+  </div>
+
+  <div class="step" data-step="5">
+    <h4>Thêm tiếng kêu và màu sắc</h4>
+    <p>Sang nhóm <strong>Âm thanh</strong> (màu hồng) lấy khối <em>bật âm thanh Meow</em>, và nhóm <strong>Hiển thị</strong> lấy khối <em>thay đổi hiệu ứng màu</em>. Ghép thành vòng lặp thứ hai:</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">8</span></div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-motion">xoay ↻ <span class="sb-inp">45</span> độ</div>
+          <div class="sb sb-palette-looks">thay đổi hiệu ứng <span class="sb-drop">màu</span> <span class="sb-inp">25</span></div>
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Meow</span></div>
+          <div class="sb sb-palette-control">đợi <span class="sb-inp">0.3</span> giây</div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Xoay 45 độ tám lần = 45 × 8 = <strong>360 độ</strong> — vừa đúng một vòng tròn trọn vẹn, nên mèo quay về đúng hướng ban đầu. Toán học trong lập trình đó!</p>
+  </div>
+
+  <div class="step" data-step="6">
+    <h4>Dọn dẹp — cho mèo về chỗ cũ</h4>
+    <p>Đây là thói quen tốt mà lập trình viên nào cũng có. Sau khi chạy xong, mèo đang ở lung tung và đổi màu xanh lè. Lần sau bấm cờ sẽ bắt đầu từ chỗ sai. Vì vậy ta thêm <strong>3 khối dọn dẹp ngay sau khối mũ</strong>:</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">0</span> y: <span class="sb-inp">0</span></div>
+      <div class="sb sb-palette-motion">hướng về phía <span class="sb-inp">90</span> độ</div>
+      <div class="sb sb-palette-looks">xoá các hiệu ứng đồ hoạ</div>
+    </div>
+    <p>Và một khối <em>nói "Hết rồi!"</em> ở cuối cùng để khép lại màn biểu diễn. Xong rồi — con có sơ đồ đầy đủ ở phần dưới để kiểm tra lại.</p>
+  </div>
+
+  <div class="box warn">
+    <h4>⚠️ Ba lỗi hay gặp nhất ở bài này</h4>
+    <ul>
+      <li><strong>Bấm cờ xanh mà không thấy gì.</strong> Khối mũ bị rời ra, không dính vào các khối dưới. Kéo lại cho sát đến khi nghe tiếng "tách".</li>
+      <li><strong>Mèo nhảy xong biến mất khỏi màn hình.</strong> Mèo đi quá xa ra khỏi sân khấu. Giảm số bước xuống, hoặc kéo chuột lôi mèo về giữa sân khấu.</li>
+      <li><strong>Khối nằm trong vùng code nhưng không chạy.</strong> Khối nào <em>không</em> nối với khối mũ thì sẽ bị bỏ qua. Nó chỉ chạy khi con bấm trực tiếp vào nó.</li>
+    </ul>
+  </div>
+
+  <h2>Sơ đồ đối chứng 🔍</h2>
+  <div class="diagram">
+    <h3>Toàn bộ kịch bản của nhân vật Mèo</h3>
+    <p style="margin-bottom:6px">Đây là tất cả những gì phải có trong vùng code. Con so từng khối từ trên xuống — đúng màu, đúng thứ tự, đúng số trong ô trắng.</p>
+    <div class="diagram-grid">
+      <div class="script-card">
+        <p class="who"><span class="dot"></span>Nhân vật: Mèo (Sprite1)</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">0</span> y: <span class="sb-inp">0</span></div>
+          <div class="sb sb-palette-motion">hướng về phía <span class="sb-inp">90</span> độ</div>
+          <div class="sb sb-palette-looks">xoá các hiệu ứng đồ hoạ</div>
+          <div class="sb sb-palette-looks">nói <span class="sb-inp">Xem mình nhảy nè!</span> trong <span class="sb-inp">2</span> giây</div>
+
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">10</span></div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-looks">trang phục kế tiếp</div>
+              <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">20</span> bước</div>
+              <div class="sb sb-palette-control">đợi <span class="sb-inp">0.2</span> giây</div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">10</span></div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-looks">trang phục kế tiếp</div>
+              <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">-20</span> bước</div>
+              <div class="sb sb-palette-control">đợi <span class="sb-inp">0.2</span> giây</div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">8</span></div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-motion">xoay ↻ <span class="sb-inp">45</span> độ</div>
+              <div class="sb sb-palette-looks">thay đổi hiệu ứng <span class="sb-drop">màu</span> <span class="sb-inp">25</span></div>
+              <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Meow</span></div>
+              <div class="sb sb-palette-control">đợi <span class="sb-inp">0.3</span> giây</div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+
+          <div class="sb sb-palette-looks">xoá các hiệu ứng đồ hoạ</div>
+          <div class="sb sb-palette-looks">nói <span class="sb-inp">Hết rồi!</span> trong <span class="sb-inp">1</span> giây</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sân khấu trông như thế nào</h3>
+    <div class="stage-mock">
+      <div class="axis-x"></div><div class="axis-y"></div>
+      <div class="pin" style="left:50%; top:50%">🐱<small>x:0 y:0 — chỗ mèo đứng lúc bắt đầu</small></div>
+      <div class="pin" style="left:12%; top:8%; font-size:.95rem"><span class="sb-flag">⚑</span><small>bấm đây để chạy</small></div>
+      <div class="pin" style="left:88%; top:50%; font-size:1rem">→<small>mèo đi về phía này</small></div>
+    </div>
+    <p class="stage-caption">Giữa sân khấu luôn là x:0 y:0. Sang phải thì x tăng, lên trên thì y tăng — bài 2 sẽ dùng nhiều đến điều này.</p>
+
+    <h3>Tự chấm điểm</h3>
+    <ul class="checklist">
+      <li>Bấm lá cờ xanh <span class="sb-flag">⚑</span> thì mèo nói câu chào trong 2 giây.</li>
+      <li>Mèo bước tới, rồi bước lùi về gần chỗ cũ.</li>
+      <li>Mèo xoay đúng <strong>một vòng tròn</strong> rồi dừng đúng hướng ban đầu (quay mặt sang phải).</li>
+      <li>Mèo đổi màu liên tục lúc xoay, rồi trở về màu cam bình thường ở cuối.</li>
+      <li>Nghe được tiếng "meo meo" khi mèo xoay.</li>
+      <li>Bấm cờ xanh lần thứ hai, mèo bắt đầu lại y hệt lần đầu (nhờ 3 khối dọn dẹp).</li>
+    </ul>
+  </div>
+
+  <h2>Thử thách thêm 🏆</h2>
+  <div class="challenge">
+    <ol>
+      <li>Đổi <em>lặp lại 10</em> thành <em>lặp lại 30</em>. Mèo nhảy lâu hơn hay nhanh hơn?</li>
+      <li>Đổi <em>đợi 0.2 giây</em> thành <em>đợi 0.05 giây</em>. Có gì khác? (Gợi ý: số càng nhỏ thì càng… )</li>
+      <li>Bấm nút <strong>Chọn một phông nền</strong> ở góc dưới bên phải và chọn một sân khấu con thích.</li>
+      <li>Thử khối <em>đổi hiệu ứng <strong>xoáy</strong></em> hoặc <em><strong>mắt cá</strong></em> thay cho hiệu ứng màu — mèo sẽ méo mó buồn cười lắm.</li>
+      <li><strong>Khó hơn:</strong> thêm một nhân vật thứ hai (bấm nút 🐭 góc dưới phải) và cho bạn ấy nhảy cùng lúc với mèo. Gợi ý: bạn ấy cũng cần một khối mũ <em>khi bấm vào <span class="sb-flag">⚑</span></em> của riêng mình.</li>
+    </ol>
+    <details>
+      <summary>Gợi ý cho câu 5</summary>
+      <p>Mỗi nhân vật có vùng code <strong>riêng</strong>. Bấm vào nhân vật nào thì vùng code hiện ra của nhân vật đó. Hai nhân vật cùng có khối mũ <em>khi bấm vào <span class="sb-flag">⚑</span></em> thì khi con bấm cờ, cả hai cùng chạy <strong>song song</strong> — đây là một ý tưởng rất mạnh mà con sẽ dùng suốt những bài sau.</p>
+    </details>
+  </div>
+
+  <div class="box goal">
+    <h4>📌 Ghi nhớ của bài 1</h4>
+    <p>Mọi kịch bản bắt đầu bằng một <strong>khối mũ</strong>. Các khối chạy <strong>lần lượt từ trên xuống dưới</strong>. Muốn làm đi làm lại một việc thì dùng khối <strong>lặp lại</strong> chứ không kéo nhiều khối giống nhau. Và nhớ <strong>dọn dẹp</strong> (về vị trí, về hướng, xoá hiệu ứng) ở đầu mỗi kịch bản.</p>
+  </div>
+
+  <nav class="lesson-nav">
+    <span>← Đây là bài đầu tiên</span>
+    <a href="/scratch/bai-02-phi-thuyen-vu-tru.html">Bài 2: Phi thuyền vũ trụ →</a>
+  </nav>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+</body>
+</html>

@@ -68,6 +68,51 @@ thay vì đính PDF.
 > 💡 Giới hạn: GitHub chặn file lớn hơn 100MB, và repo nên giữ dưới khoảng 1GB.
 > PDF bài tập thường chỉ vài trăm KB nên hoàn toàn thoải mái.
 
+### 3c. Thêm bài học Scratch (tab "Scratch-ĐQ")
+
+Thư mục `scratch/` hoạt động y hệt `grammar/`: thả file `.html` vào, GitHub Actions
+tự cập nhật `scratch/index.json`.
+
+1. Copy một bài có sẵn (ví dụ `scratch/bai-03-hung-tao.html`) rồi sửa nội dung
+2. Đặt tên file theo thứ tự: `bai-06-ten-bai.html` (danh sách sắp theo tên file tăng dần)
+3. Đặt `<title>Bài 6 — Tên bài (chủ đề)</title>` — đây là tiêu đề hiện ở danh sách
+4. Sửa lại 2 link `<nav class="lesson-nav">` ở cuối bài, và thêm link "bài sau" vào bài trước đó
+5. `git add scratch/ && git commit -m "Thêm bài Scratch" && git push`
+
+**Vẽ khối lệnh Scratch:** dùng các class trong `assets/css/scratch.css`
+(không cần ảnh chụp màn hình, khối được dựng bằng CSS nên nét trên mọi màn hình):
+
+```html
+<div class="sb-stack">
+  <!-- khối mũ -->
+  <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+  <!-- khối thường + ô nhập -->
+  <div class="sb sb-palette-motion">di chuyển <span class="sb-inp">10</span> bước</div>
+  <!-- khối chữ C (lặp, nếu…thì) -->
+  <div class="sb-c sb-palette-control">
+    <div class="sb sb-c-head sb-palette-control">lặp lại <span class="sb-inp">10</span></div>
+    <div class="sb-c-body">
+      <div class="sb sb-palette-looks">trang phục kế tiếp</div>
+    </div>
+    <div class="sb-c-else">nếu không</div>   <!-- chỉ dùng cho khối nếu–thì–nếu không -->
+    <div class="sb-c-foot"></div>
+  </div>
+</div>
+```
+
+| Thành phần | Class |
+| --- | --- |
+| Màu theo nhóm khối | `sb-palette-motion` `-looks` `-sound` `-events` `-control` `-sensing` `-operators` `-variables` `-myblocks` |
+| Ô nhập trắng / dropdown | `sb-inp` / `sb-drop` |
+| Ô bầu dục (biến, toán tử) | `sb-ov` |
+| Ô lục giác (điều kiện) | `sb-hex` |
+| Ô màu trong "chạm màu" | `sb-swatch` (đặt `style="background:#111"`) |
+| Khối kết thúc (dừng tất cả) | thêm `sb-cap` |
+
+Các khối dựng sẵn khác của bài học: `.box` (`.goal` `.tip` `.warn` `.why` `.fun`),
+`.step` (cần `data-step="1"`), `.diagram` + `.diagram-grid.two` + `.script-card`,
+`.checklist`, `.stage-mock`, `.challenge`, `.lesson-nav`.
+
 ### 4. Thêm nội dung mới (Chủ điểm ngữ pháp / Bài tập làm thêm / Blog)
 - Build file `.html` mới (có thể copy 1 file mẫu có sẵn trong `grammar/`, `extra/`, hoặc `blog/posts/` rồi sửa nội dung)
 - Đặt đúng tag `<title>Tên bài học</title>` trong file — đây là tiêu đề sẽ hiện ra ở trang danh sách
@@ -88,6 +133,7 @@ dongquan-net/
 ├── 404.html
 ├── assets/
 │   ├── css/style.css         # Toàn bộ design system (theme "vở bài tập")
+│   │   └── scratch.css       # khối lệnh Scratch mô phỏng (chỉ dùng ở /scratch/)
 │   └── js/
 │       ├── main.js
 │       ├── firebase-config.js   # ⚠️ CẦN ĐIỀN CONFIG THẬT
@@ -95,6 +141,10 @@ dongquan-net/
 ├── kmh/                       # Module Bài tập KMH (Firebase)
 │   ├── index.html
 │   └── kmh.js
+├── scratch/                   # Giáo trình Scratch (tự đồng bộ như grammar/)
+│   ├── index.html
+│   ├── index.json             # tự sinh, không sửa tay
+│   └── bai-01-meo-nhay-mua.html … bai-05-me-cung.html
 ├── grammar/                   # Chủ điểm ngữ pháp (tự đồng bộ qua GitHub Actions)
 │   ├── index.html
 │   ├── index.json             # tự sinh, không sửa tay

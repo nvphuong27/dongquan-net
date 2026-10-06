@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 2 — Phi thuyền vũ trụ (điều khiển bằng phím)</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson">
+  <p class="back-link"><a href="/scratch/">← Quay lại danh sách bài học</a></p>
+  <p class="eyebrow">Scratch · Bài 2</p>
+  <h1>Phi thuyền vũ trụ 🚀⭐</h1>
+  <p class="lead">Lần này con tự tay điều khiển nhân vật bằng phím mũi tên! Lái phi thuyền bay khắp dải ngân hà để bắt những ngôi sao. Đây là nền móng của mọi trò chơi hành động.</p>
+
+  <div class="meta-strip">
+    <span>⏱️ 40–50 phút</span>
+    <span>🎯 Mức: Mới bắt đầu</span>
+    <span>🧩 2 nhân vật</span>
+    <span>📍 Cần hiểu x, y</span>
+  </div>
+
+  <div class="box goal">
+    <h4>Học xong bài này con sẽ biết</h4>
+    <ul>
+      <li>Toạ độ <strong>x</strong> và <strong>y</strong> — cách Scratch xác định một điểm trên sân khấu.</li>
+      <li>Khối <strong>lặp mãi</strong> và vì sao mọi trò chơi đều cần nó.</li>
+      <li>Khối <strong>nếu … thì</strong> và khối điều kiện hình lục giác.</li>
+      <li>Hai cách điều khiển bằng bàn phím — và vì sao cách thứ hai mượt hơn hẳn.</li>
+      <li>Cảm biến <strong>đang chạm</strong> và <strong>số ngẫu nhiên</strong>.</li>
+    </ul>
+  </div>
+
+  <h2>Phần A — Hiểu về x và y</h2>
+  <p>Sân khấu Scratch giống như một tấm bản đồ có ô. Mỗi vị trí có <strong>hai con số</strong>:</p>
+  <ul style="color:var(--ink-soft)">
+    <li><strong>x</strong> = sang trái hay sang phải. Giữa là 0, mép phải là 240, mép trái là −240.</li>
+    <li><strong>y</strong> = lên trên hay xuống dưới. Giữa là 0, mép trên là 180, mép dưới là −180.</li>
+  </ul>
+
+  <div class="stage-mock">
+    <div class="axis-x"></div><div class="axis-y"></div>
+    <div class="pin" style="left:50%; top:50%; font-size:1rem">⊕<small>x:0 y:0 (giữa)</small></div>
+    <div class="pin" style="left:88%; top:50%; font-size:.9rem">▸<small>x:240</small></div>
+    <div class="pin" style="left:11%; top:50%; font-size:.9rem">◂<small>x:-240</small></div>
+    <div class="pin" style="left:50%; top:9%; font-size:.9rem">▴<small>y:180</small></div>
+    <div class="pin" style="left:50%; top:91%; font-size:.9rem">▾<small>y:-180</small></div>
+    <div class="pin" style="left:76%; top:24%">🚀<small>x:130 y:95</small></div>
+  </div>
+  <p class="stage-caption">Mẹo kiểm tra: kéo chuột lôi nhân vật đi vòng quanh sân khấu, rồi nhìn ô <strong>x</strong> và <strong>y</strong> ở bảng thông tin ngay dưới sân khấu — hai số đó thay đổi theo. Chơi thử 1 phút là hiểu ngay.</p>
+
+  <div class="box why">
+    <h4>🤔 "thay đổi y thêm 10" khác gì "đặt y bằng 10"?</h4>
+    <p><strong>đặt y bằng 10</strong> = nhảy thẳng đến đúng vị trí y = 10, bất kể đang ở đâu.<br>
+    <strong>thay đổi y thêm 10</strong> = <em>cộng thêm</em> 10 vào vị trí hiện tại. Đang ở y = 50 thì thành 60. Muốn nhân vật nhích dần dần thì phải dùng khối "thay đổi".</p>
+  </div>
+
+  <h2>Phần B — Làm từng bước</h2>
+
+  <div class="step" data-step="1">
+    <h4>Chuẩn bị sân khấu và nhân vật</h4>
+    <p>Bấm chuột phải vào chú mèo trong danh sách nhân vật → <strong>xoá</strong>. Rồi:</p>
+    <ul style="color:var(--ink-soft)">
+      <li>Bấm nút 🐱 góc dưới bên phải → <strong>Chọn một nhân vật</strong> → tìm <strong>Rocketship</strong> (phi thuyền).</li>
+      <li>Thêm nhân vật thứ hai: <strong>Star</strong> (ngôi sao).</li>
+      <li>Bấm nút 🖼️ góc dưới cùng bên phải → <strong>Chọn một phông nền</strong> → chọn <strong>Stars</strong> hoặc <strong>Nebula</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="step" data-step="2">
+    <h4>Cách điều khiển thứ nhất — dễ nhưng hơi giật</h4>
+    <p>Bấm chọn nhân vật <strong>Rocketship</strong>. Vào nhóm <strong>Sự kiện</strong>, kéo ra khối <em>khi phím … được nhấn</em> rồi chọn <em>mũi tên lên</em>:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi phím <span class="sb-drop">mũi tên lên</span> được nhấn</div>
+      <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">10</span></div>
+    </div>
+    <p>Thử ngay: bấm phím mũi tên lên → phi thuyền nhích lên. Làm thêm 3 cái nữa cho <em>mũi tên xuống</em> (y thêm −10), <em>mũi tên phải</em> (x thêm 10), <em>mũi tên trái</em> (x thêm −10).</p>
+    <p>Bây giờ giữ phím mũi tên lên thật lâu và quan sát kỹ: nó nhích <strong>một cái</strong> → khựng lại một chút → rồi mới chạy đều. Giống như lúc con giữ phím chữ "a" trong Word vậy. Trong trò chơi, cái khựng đó rất khó chịu.</p>
+  </div>
+
+  <div class="step" data-step="3">
+    <h4>Cách điều khiển thứ hai — mượt mà, dùng lặp mãi + nếu…thì</h4>
+    <p>Xoá hết 4 kịch bản vừa làm (kéo thả chúng vào hộp khối bên trái là xoá). Ta làm lại theo cách của dân chuyên nghiệp.</p>
+    <p>Ý tưởng: thay vì <em>đợi</em> bàn phím báo tin, ta cho phi thuyền <strong>tự hỏi liên tục, mỗi giây hàng chục lần</strong>: "Phím lên có đang được nhấn không? Có thì bay lên."</p>
+    <p>Lấy khối <em>lặp mãi</em> ở nhóm <strong>Điều khiển</strong>, và khối <em>nếu … thì</em> cũng ở đó. Phần hình lục giác của khối <em>nếu</em> thì lấy khối <em>phím … được nhấn?</em> ở nhóm <strong>Cảm biến</strong> (xanh nhạt) nhét vào:</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+        <div class="sb-c-body">
+          <div class="sb-c sb-palette-control sb-c-last">
+            <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên lên</span> được nhấn?</span> thì</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">5</span></div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Chạy thử: giữ phím mũi tên lên — phi thuyền bay lên <strong>đều tăm tắp, không khựng</strong>. Đây chính là bí mật của mọi game điều khiển mượt mà.</p>
+  </div>
+
+  <div class="step" data-step="4">
+    <h4>Thêm 3 hướng còn lại</h4>
+    <p>Bấm chuột phải vào khối <em>nếu…thì</em> vừa làm → chọn <strong>Nhân bản</strong> (Duplicate) → thả bản sao vào ngay dưới nó, <strong>vẫn ở trong bụng khối lặp mãi</strong>. Làm vậy 3 lần rồi sửa lại:</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Phím</th><th>Khối bên trong</th><th>Nghĩa là</th></tr>
+      <tr><td>mũi tên lên</td><td>thay đổi y thêm 5</td><td>bay lên</td></tr>
+      <tr><td>mũi tên xuống</td><td>thay đổi y thêm −5</td><td>bay xuống</td></tr>
+      <tr><td>mũi tên phải</td><td>thay đổi x thêm 5</td><td>bay sang phải</td></tr>
+      <tr><td>mũi tên trái</td><td>thay đổi x thêm −5</td><td>bay sang trái</td></tr>
+    </table>
+    </div>
+    <div class="box tip">
+      <h4>💡 Nhân bản là bạn thân</h4>
+      <p>Lập trình viên rất lười gõ lại cùng một thứ. Chuột phải → Nhân bản giúp con tiết kiệm hàng chục lần kéo thả, và quan trọng hơn là <strong>ít sai sót hơn</strong>.</p>
+    </div>
+  </div>
+
+  <div class="step" data-step="5">
+    <h4>Không cho phi thuyền bay mất khỏi màn hình</h4>
+    <p>Thêm khối <em>nếu chạm biên, bật lại</em> (nhóm Chuyển động) vào <strong>cuối bụng khối lặp mãi</strong>, sau tất cả các khối nếu…thì. Phi thuyền chạm mép sân khấu sẽ bị đẩy ngược lại thay vì biến mất.</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-motion">nếu chạm biên, bật lại</div>
+    </div>
+    <p>Và thêm 2 khối dọn dẹp ngay sau khối mũ, như đã học ở bài 1:</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">50</span> %</div>
+      <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">0</span> y: <span class="sb-inp">-100</span></div>
+    </div>
+  </div>
+
+  <div class="step" data-step="6">
+    <h4>Ngôi sao biết trốn — nhân vật thứ hai</h4>
+    <p>Bấm chọn nhân vật <strong>Star</strong> trong danh sách nhân vật. Chú ý: vùng code vừa đổi sang <em>của Star</em>, các khối của phi thuyền không mất đi đâu cả, chỉ là đang ẩn đi thôi.</p>
+    <p>Ngôi sao sẽ liên tục tự hỏi: "Phi thuyền đã chạm vào mình chưa? Rồi thì mình trốn sang chỗ khác."</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Rocketship</span> ?</span> thì</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-200</span> đến <span class="sb-inp">200</span></span> y: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-140</span> đến <span class="sb-inp">140</span></span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p><strong>Khối ngẫu nhiên (màu xanh lá, nhóm Các phép toán)</strong> giống như tung xúc xắc: mỗi lần chạy nó cho một con số khác nhau trong khoảng con đặt. Nhờ vậy ngôi sao không bao giờ xuất hiện ở chỗ đoán trước được — trò chơi mới thú vị.</p>
+    <p>Nhớ bọc khối <em>nếu…thì</em> này trong một khối <strong>lặp mãi</strong>, và đặt dưới khối mũ <em>khi bấm vào <span class="sb-flag">⚑</span></em>. Sơ đồ đầy đủ ở phần dưới.</p>
+  </div>
+
+  <div class="box warn">
+    <h4>⚠️ Lỗi hay gặp</h4>
+    <ul>
+      <li><strong>Phi thuyền không nhúc nhích.</strong> Con quên bấm lá cờ xanh! Khác với cách 1, cách 2 phải bấm cờ thì kịch bản <em>lặp mãi</em> mới bắt đầu chạy.</li>
+      <li><strong>Phi thuyền chỉ đi được một hướng.</strong> Mấy khối <em>nếu…thì</em> kia bị đặt <strong>bên ngoài</strong> khối lặp mãi. Chúng phải nằm hết trong bụng chữ C.</li>
+      <li><strong>Ngôi sao nhảy loạn xạ liên tục.</strong> Nó vẫn còn chạm phi thuyền sau khi nhảy. Thêm khối <em>đợi 0.2 giây</em> ngay sau khối <em>đi tới x… y…</em>.</li>
+      <li><strong>Viết code vào nhầm nhân vật.</strong> Trước khi kéo khối, luôn nhìn xem nhân vật nào đang được chọn (có viền xanh) trong danh sách nhân vật.</li>
+    </ul>
+  </div>
+
+  <h2>Sơ đồ đối chứng 🔍</h2>
+  <div class="diagram">
+    <h3>Toàn bộ kịch bản — hai nhân vật</h3>
+    <p style="margin-bottom:6px">Mỗi khung dưới đây là vùng code của <strong>một</strong> nhân vật. Bấm chọn nhân vật tương ứng rồi so từng khối.</p>
+    <div class="diagram-grid two">
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#4C97FF"></span>🚀 Nhân vật: Rocketship</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">50</span> %</div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">0</span> y: <span class="sb-inp">-100</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên lên</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">5</span></div></div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên xuống</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-5</span></div></div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên phải</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">5</span></div></div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">phím <span class="sb-drop">mũi tên trái</span> được nhấn?</span> thì</div>
+                <div class="sb-c-body"><div class="sb sb-palette-motion">thay đổi x thêm <span class="sb-inp">-5</span></div></div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb sb-palette-motion">nếu chạm biên, bật lại</div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#FFBF00"></span>⭐ Nhân vật: Star</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">60</span> %</div>
+          <div class="sb sb-palette-motion">đi tới x: <span class="sb-inp">0</span> y: <span class="sb-inp">100</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Rocketship</span> ?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+                  <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-200</span> đến <span class="sb-inp">200</span></span> y: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-140</span> đến <span class="sb-inp">140</span></span></div>
+                  <div class="sb sb-palette-control">đợi <span class="sb-inp">0.2</span> giây</div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sân khấu lúc vừa bấm cờ xanh</h3>
+    <div class="stage-mock" style="background:#1B1F3B">
+      <div class="axis-x" style="background:rgba(255,255,255,.14)"></div>
+      <div class="axis-y" style="background:rgba(255,255,255,.14)"></div>
+      <div class="pin" style="left:50%; top:22%">⭐<small style="color:#cfd6e6">x:0 y:100</small></div>
+      <div class="pin" style="left:50%; top:78%">🚀<small style="color:#cfd6e6">x:0 y:-100</small></div>
+    </div>
+    <p class="stage-caption">Phi thuyền ở dưới, ngôi sao ở trên. Mỗi lần bắt được sao, sao nhảy sang một chỗ ngẫu nhiên khác.</p>
+
+    <h3>Tự chấm điểm</h3>
+    <ul class="checklist">
+      <li>Giữ phím mũi tên — phi thuyền bay <strong>đều và liên tục</strong>, không bị khựng lúc đầu.</li>
+      <li>Bay được cả 4 hướng: lên, xuống, trái, phải.</li>
+      <li>Bay chéo được: giữ cùng lúc mũi tên lên + mũi tên phải thì phi thuyền đi chéo lên góc phải.</li>
+      <li>Phi thuyền không bay lọt ra khỏi sân khấu.</li>
+      <li>Chạm vào ngôi sao thì nghe tiếng "pop" và sao nhảy sang chỗ khác.</li>
+      <li>Chỗ sao nhảy đến <strong>mỗi lần một khác</strong>, không đoán trước được.</li>
+    </ul>
+  </div>
+
+  <h2>Thử thách thêm 🏆</h2>
+  <div class="challenge">
+    <ol>
+      <li>Đổi số 5 thành 15 trong các khối "thay đổi x/y". Phi thuyền bay nhanh hơn hay chậm hơn?</li>
+      <li>Thêm khối <em>hướng về phía 0 độ</em> ngay sau khối mũ, để mũi phi thuyền chĩa thẳng lên trời.</li>
+      <li>Cho ngôi sao <em>xoay ↻ 5 độ</em> liên tục bên trong khối lặp mãi để nó lấp lánh quay tròn.</li>
+      <li>Thêm nhân vật <strong>Ball</strong> làm "thiên thạch" bay ngang qua. Dùng <em>lặp mãi [ di chuyển 8 bước, nếu chạm biên bật lại ]</em>.</li>
+      <li><strong>Khó hơn:</strong> làm phi thuyền bay chậm lại khi giữ phím cách (space). Gợi ý: một khối <em>nếu phím cách được nhấn? thì đợi 0.05 giây</em> đặt trong lặp mãi.</li>
+    </ol>
+    <details>
+      <summary>Vì sao bay chéo được mà không cần viết thêm gì?</summary>
+      <p>Vì bốn khối <em>nếu…thì</em> được kiểm tra <strong>lần lượt trong cùng một vòng lặp</strong>. Giữ hai phím cùng lúc thì hai câu "nếu" cùng đúng, nên cả hai khối chuyển động đều chạy — phi thuyền vừa nhích lên vừa nhích sang phải, mắt ta nhìn thấy là đi chéo. Nếu dùng cách 1 (bốn khối mũ) thì chuyện này khó xảy ra hơn nhiều.</p>
+    </details>
+  </div>
+
+  <div class="box goal">
+    <h4>📌 Ghi nhớ của bài 2</h4>
+    <p><strong>x</strong> là trái–phải, <strong>y</strong> là trên–dưới, giữa sân khấu là (0, 0). Công thức điều khiển mượt của mọi trò chơi là: <strong>lặp mãi [ nếu phím … được nhấn? thì thay đổi x/y ]</strong>. Và <strong>lấy ngẫu nhiên</strong> là gia vị làm trò chơi không bao giờ nhàm chán.</p>
+  </div>
+
+  <nav class="lesson-nav">
+    <a href="/scratch/bai-01-meo-nhay-mua.html">← Bài 1: Mèo nhảy múa</a>
+    <a href="/scratch/bai-03-hung-tao.html">Bài 3: Hứng táo →</a>
+  </nav>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+</body>
+</html>

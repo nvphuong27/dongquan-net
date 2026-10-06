@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 3 — Hứng táo (biến và điểm số)</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/scratch.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="spiral-strip">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-icon" aria-hidden="true">🏠</span>Đông Quân's English Corner</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/timetable/">Timetable</a>
+      <a href="/kmh/">KMH Homework</a>
+      <a href="/grammar/">Grammar Topics</a>
+      <a href="/extra/">Extra Practice</a>
+      <a href="/long-term/">Long-term Assignment</a>
+      <a href="/scratch/" class="active">Scratch-ĐQ</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson">
+  <p class="back-link"><a href="/scratch/">← Quay lại danh sách bài học</a></p>
+  <p class="eyebrow">Scratch · Bài 3</p>
+  <h1>Hứng táo 🍎🧺</h1>
+  <p class="lead">Táo rụng từ trên trời xuống, con di chuyển cái giỏ để hứng. Hứng được thì cộng điểm, để rơi 3 quả là thua. Bài này con sẽ học thứ quan trọng nhất của mọi trò chơi: <strong>biến</strong> — cái hộp nhớ số.</p>
+
+  <div class="meta-strip">
+    <span>⏱️ 45–60 phút</span>
+    <span>🎯 Mức: Cơ bản +</span>
+    <span>🧩 2 nhân vật</span>
+    <span>🔢 Có biến &amp; điểm số</span>
+  </div>
+
+  <div class="box goal">
+    <h4>Học xong bài này con sẽ biết</h4>
+    <ul>
+      <li><strong>Biến</strong> là gì — cái hộp để máy tính nhớ một con số, và cách tạo nó.</li>
+      <li>Phân biệt <em>đặt … thành</em> và <em>thay đổi … một lượng</em>.</li>
+      <li>Khối <strong>lặp cho đến khi</strong> — lặp tới khi một điều kiện trở thành đúng.</li>
+      <li>Khối <strong>nếu … thì … nếu không</strong> — chia hai ngả, trúng làm thế này, trượt làm thế kia.</li>
+      <li>Toán tử <strong>hoặc</strong> và toán tử so sánh <strong>&lt;</strong>, <strong>=</strong>.</li>
+      <li>Điều khiển bằng <strong>chuột</strong> thay vì bàn phím.</li>
+    </ul>
+  </div>
+
+  <h2>Phần A — Biến là cái gì?</h2>
+  <p>Hãy tưởng tượng một cái hộp có dán nhãn. Trên nhãn ghi <strong>Điểm</strong>, bên trong hộp có một tờ giấy ghi con số. Mỗi khi hứng được táo, ta lấy tờ giấy ra, xoá số cũ, viết số mới lớn hơn 1 đơn vị rồi bỏ lại vào hộp.</p>
+  <p>Cái hộp đó chính là <strong>biến</strong>. Máy tính cần biến vì nó không tự nhớ được gì cả — mọi thứ phải cất vào hộp có tên.</p>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>Khối</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+    <tr><td><strong>đặt [Điểm] thành 0</strong></td><td>Vứt số cũ đi, viết số mới đè lên</td><td>Dùng lúc bắt đầu ván mới</td></tr>
+    <tr><td><strong>thay đổi [Điểm] một lượng 1</strong></td><td>Cộng thêm vào số đang có</td><td>Đang 7 điểm → thành 8 điểm</td></tr>
+    <tr><td><strong>thay đổi [Điểm] một lượng -1</strong></td><td>Trừ bớt đi (vì cộng số âm)</td><td>Đang 7 điểm → thành 6 điểm</td></tr>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <h4>⚠️ Lỗi kinh điển mà ai cũng mắc một lần</h4>
+    <p>Nếu con dùng <em>đặt [Điểm] thành 1</em> mỗi lần hứng được táo, thì điểm sẽ mãi mãi là 1 — vì lần nào cũng xoá đi viết lại số 1! Phải dùng <em>thay đổi [Điểm] một lượng 1</em> mới cộng dồn được.</p>
+  </div>
+
+  <h2>Phần B — Làm từng bước</h2>
+
+  <div class="step" data-step="1">
+    <h4>Chuẩn bị</h4>
+    <ul style="color:var(--ink-soft)">
+      <li>Xoá chú mèo. Thêm nhân vật <strong>Bowl</strong> (cái tô) và <strong>Apple</strong> (quả táo).</li>
+      <li>Chọn một phông nền, ví dụ <strong>Blue Sky</strong> hoặc <strong>Farm</strong>.</li>
+      <li>Chọn nhân vật Apple, vào tab <strong>Âm thanh</strong> ở góc trên trái → bấm 🔊 → thêm hai âm <strong>Pop</strong> và <strong>Boing</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="step" data-step="2">
+    <h4>Tạo hai biến</h4>
+    <p>Vào nhóm <strong>Các biến số</strong> (màu cam đậm) → bấm <strong>Tạo một biến</strong>. Gõ tên <strong>Điểm</strong> → OK. Làm lần nữa, tạo biến tên <strong>Trượt</strong>.</p>
+    <p>Hai ô hiển thị số sẽ xuất hiện ở góc trên trái sân khấu. Con có thể kéo chúng sang chỗ khác cho đẹp, hoặc bỏ dấu tick để ẩn đi.</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-variables">đặt <span class="sb-drop">Điểm</span> thành <span class="sb-inp">0</span></div>
+      <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Điểm</span> một lượng <span class="sb-inp">1</span></div>
+    </div>
+    <div class="box tip">
+      <h4>💡 Đặt tên biến cho tử tế</h4>
+      <p>Nên đặt tên rõ nghĩa như <em>Điểm</em>, <em>Mạng</em>, <em>Tốc độ</em>. Đừng đặt là <em>a</em>, <em>b</em>, <em>x1</em> — một tuần sau mở lại chính con cũng không nhớ nổi nó là gì.</p>
+    </div>
+  </div>
+
+  <div class="step" data-step="3">
+    <h4>Cái tô bám theo chuột</h4>
+    <p>Chọn nhân vật <strong>Bowl</strong>. Bài này ta điều khiển bằng chuột cho mới lạ — cái tô sẽ luôn nằm đúng bên dưới con trỏ.</p>
+    <div class="sb-stack">
+      <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+      <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">80</span> %</div>
+      <div class="sb sb-palette-motion">đặt y bằng <span class="sb-inp">-130</span></div>
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-motion">đặt x bằng <span class="sb-ov sb-palette-sensing">hoành độ con trỏ</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p><strong>hoành độ con trỏ</strong> (nhóm Cảm biến) là một khối bầu dục — nó <em>báo về</em> toạ độ x của con trỏ chuột ngay lúc này. Ta nhét nó vào ô số của khối "đặt x bằng". Vì chỉ đặt x mà không đặt y, cái tô chỉ trượt ngang chứ không nhảy lên nhảy xuống theo chuột.</p>
+  </div>
+
+  <div class="step" data-step="4">
+    <h4>Quả táo rơi xuống</h4>
+    <p>Chọn nhân vật <strong>Apple</strong>. Trước tiên cho táo bay lên đỉnh màn hình ở một vị trí ngang ngẫu nhiên:</p>
+    <div class="sb-stack">
+      <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-200</span> đến <span class="sb-inp">200</span></span> y: <span class="sb-inp">160</span></div>
+    </div>
+    <p>Rồi cho nó rơi dần bằng khối <strong>lặp cho đến khi</strong>. Khối này nghĩa là: <em>"cứ làm đi làm lại, cho đến lúc nào câu hỏi trong lục giác trở thành ĐÚNG thì mới dừng"</em>.</p>
+    <p>Táo cần dừng rơi trong <strong>hai</strong> trường hợp: chạm vào tô (hứng trúng), <strong>hoặc</strong> rơi xuống thấp hơn đáy màn hình (trượt). Vì vậy ta dùng khối <strong>hoặc</strong> màu xanh lá để ghép hai điều kiện lại:</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">lặp cho đến khi <span class="sb-hex sb-palette-operators"><span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Bowl</span> ?</span> hoặc <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-motion">tung độ y</span> &lt; <span class="sb-inp">-150</span></span></span></div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-7</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Số <strong>−7</strong> là tốc độ rơi. Số càng âm nhiều thì táo rơi càng nhanh, trò chơi càng khó.</p>
+  </div>
+
+  <div class="step" data-step="5">
+    <h4>Hứng trúng hay trượt? — khối nếu…thì…nếu không</h4>
+    <p>Táo vừa dừng rơi. Nhưng dừng vì lý do gì? Ta phải hỏi lại một lần nữa. Khối <strong>nếu … thì … nếu không</strong> chia đường đi làm hai ngả — chỉ <strong>một</strong> trong hai ngả được chạy, không bao giờ cả hai.</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Bowl</span> ?</span> thì</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+          <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Điểm</span> một lượng <span class="sb-inp">1</span></div>
+        </div>
+        <div class="sb-c-else">nếu không</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Boing</span></div>
+          <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Trượt</span> một lượng <span class="sb-inp">1</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" data-step="6">
+    <h4>Thua cuộc khi trượt 3 quả</h4>
+    <p>Cuối cùng, kiểm tra xem đã trượt đủ 3 quả chưa. Khối <strong>=</strong> (nhóm Các phép toán) so sánh hai giá trị, nếu bằng nhau thì nó trả lời "đúng".</p>
+    <div class="sb-stack">
+      <div class="sb-c sb-palette-control sb-c-last">
+        <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-variables">Trượt</span> = <span class="sb-inp">3</span></span> thì</div>
+        <div class="sb-c-body">
+          <div class="sb sb-palette-looks">nói <span class="sb-ov sb-palette-operators">kết hợp <span class="sb-inp">Hết lượt! Điểm: </span> và <span class="sb-ov sb-palette-variables">Điểm</span></span> trong <span class="sb-inp">3</span> giây</div>
+          <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+        </div>
+        <div class="sb-c-foot"></div>
+      </div>
+    </div>
+    <p>Khối <strong>kết hợp</strong> dán hai mẩu chữ lại thành một câu. Nó biến con số 12 trong biến Điểm thành câu "Hết lượt! Điểm: 12".</p>
+    <p>Tất cả những thứ này (bước 4, 5, 6) nằm trong <strong>một khối lặp mãi</strong>, để táo rụng hết quả này đến quả khác không ngừng. Xem sơ đồ đầy đủ ngay dưới.</p>
+  </div>
+
+  <div class="box why">
+    <h4>🤔 Vì sao "lặp cho đến khi" chứ không phải "lặp mãi"?</h4>
+    <p><em>lặp mãi</em> thì không bao giờ thoát ra được — táo sẽ rơi mãi xuyên qua đáy màn hình và chương trình kẹt luôn ở đó. <em>lặp cho đến khi</em> giống như nói: "rơi đi, rơi đi… ồ chạm tô rồi, dừng!" — nó <strong>có đường ra</strong>. Mỗi khi cần lặp mà biết trước điều kiện dừng, hãy chọn khối này.</p>
+  </div>
+
+  <h2>Sơ đồ đối chứng 🔍</h2>
+  <div class="diagram">
+    <h3>Toàn bộ kịch bản — hai nhân vật</h3>
+    <div class="diagram-grid two">
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#59C059"></span>🧺 Nhân vật: Bowl (cái tô)</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">80</span> %</div>
+          <div class="sb sb-palette-motion">đặt y bằng <span class="sb-inp">-130</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-motion">đặt x bằng <span class="sb-ov sb-palette-sensing">hoành độ con trỏ</span></div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-card">
+        <p class="who"><span class="dot" style="background:#C1443C"></span>🍎 Nhân vật: Apple (quả táo)</p>
+        <div class="sb-stack">
+          <div class="sb sb-hat sb-palette-events">khi bấm vào <span class="sb-flag">⚑</span></div>
+          <div class="sb sb-palette-looks">đặt kích thước thành <span class="sb-inp">50</span> %</div>
+          <div class="sb sb-palette-variables">đặt <span class="sb-drop">Điểm</span> thành <span class="sb-inp">0</span></div>
+          <div class="sb sb-palette-variables">đặt <span class="sb-drop">Trượt</span> thành <span class="sb-inp">0</span></div>
+          <div class="sb-c sb-palette-control">
+            <div class="sb sb-c-head sb-palette-control">lặp mãi</div>
+            <div class="sb-c-body">
+              <div class="sb sb-palette-motion">đi tới x: <span class="sb-ov sb-palette-operators">lấy ngẫu nhiên từ <span class="sb-inp">-200</span> đến <span class="sb-inp">200</span></span> y: <span class="sb-inp">160</span></div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">lặp cho đến khi <span class="sb-hex sb-palette-operators"><span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Bowl</span> ?</span> hoặc <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-motion">tung độ y</span> &lt; <span class="sb-inp">-150</span></span></span></div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-motion">thay đổi y thêm <span class="sb-inp">-7</span></div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-sensing">đang chạm <span class="sb-drop">Bowl</span> ?</span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Pop</span></div>
+                  <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Điểm</span> một lượng <span class="sb-inp">1</span></div>
+                </div>
+                <div class="sb-c-else">nếu không</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-sound">bật âm thanh <span class="sb-drop">Boing</span></div>
+                  <div class="sb sb-palette-variables">thay đổi <span class="sb-drop">Trượt</span> một lượng <span class="sb-inp">1</span></div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+              <div class="sb-c sb-palette-control">
+                <div class="sb sb-c-head sb-palette-control">nếu <span class="sb-hex sb-palette-operators"><span class="sb-ov sb-palette-variables">Trượt</span> = <span class="sb-inp">3</span></span> thì</div>
+                <div class="sb-c-body">
+                  <div class="sb sb-palette-looks">nói <span class="sb-ov sb-palette-operators">kết hợp <span class="sb-inp">Hết lượt! Điểm: </span> và <span class="sb-ov sb-palette-variables">Điểm</span></span> trong <span class="sb-inp">3</span> giây</div>
+                  <div class="sb sb-palette-control sb-cap">dừng <span class="sb-drop">tất cả</span></div>
+                </div>
+                <div class="sb-c-foot"></div>
+              </div>
+            </div>
+            <div class="sb-c-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sân khấu trông như thế nào</h3>
+    <div class="stage-mock" style="background:#DCF0FF">
+      <div class="pin" style="left:62%; top:12%">🍎<small>rơi từ y:160 xuống</small></div>
+      <div class="pin" style="left:62%; top:36%; font-size:1rem">↓</div>
+      <div class="pin" style="left:62%; top:52%; font-size:1rem">↓</div>
+      <div class="pin" style="left:62%; top:86%">🧺<small>y luôn = -130, x bám chuột</small></div>
+      <div style="position:absolute; left:8px; top:8px; font-family:var(--font-mono); font-size:.62rem; background:#FF8C1A; color:#fff; padding:3px 8px; border-radius:4px">Điểm 7</div>
+      <div style="position:absolute; left:8px; top:30px; font-family:var(--font-mono); font-size:.62rem; background:#FF8C1A; color:#fff; padding:3px 8px; border-radius:4px">Trượt 1</div>
+    </div>
+    <p class="stage-caption">Hai ô cam ở góc trái là hai biến. Con số trong đó thay đổi ngay trước mắt mỗi khi hứng trúng hoặc trượt.</p>
+
+    <h3>Tự chấm điểm</h3>
+    <ul class="checklist">
+      <li>Di chuyển chuột — cái tô trượt ngang theo, nhưng <strong>không</strong> nhảy lên xuống.</li>
+      <li>Táo rơi từ trên xuống, mỗi quả ở một vị trí ngang khác nhau.</li>
+      <li>Hứng trúng: nghe tiếng "pop", ô <strong>Điểm</strong> tăng thêm 1.</li>
+      <li>Để rơi: nghe tiếng "boing", ô <strong>Trượt</strong> tăng thêm 1.</li>
+      <li>Điểm <strong>cộng dồn</strong> lên 1, 2, 3… chứ không đứng yên ở số 1.</li>
+      <li>Trượt đủ 3 quả thì hiện câu "Hết lượt! Điểm: …" rồi trò chơi dừng hẳn.</li>
+      <li>Bấm cờ xanh lại từ đầu, Điểm và Trượt đều quay về 0.</li>
+    </ul>
+  </div>
+
+  <h2>Thử thách thêm 🏆</h2>
+  <div class="challenge">
+    <ol>
+      <li>Làm cho trò chơi <strong>khó dần</strong>: tạo biến <em>Tốc độ</em>, đặt thành −5 lúc đầu, mỗi lần hứng trúng thì <em>thay đổi Tốc độ một lượng −0.3</em>, rồi dùng biến đó thay cho số −7.</li>
+      <li>Thêm một quả <strong>bom</strong> (nhân vật Ball tô màu đen): hứng trúng bom thì trừ 2 điểm.</li>
+      <li>Hiện một dòng chữ "Kỷ lục" — tạo biến <em>Kỷ lục</em> và chỉ cập nhật khi Điểm lớn hơn Kỷ lục. Gợi ý: dùng khối so sánh <strong>&gt;</strong>.</li>
+      <li>Cho táo xoay tròn lúc rơi: thêm <em>xoay ↻ 10 độ</em> vào trong khối lặp cho đến khi.</li>
+      <li><strong>Khó hơn:</strong> đổi điều khiển từ chuột sang phím mũi tên trái/phải như bài 2. Cách nào chơi đã hơn?</li>
+    </ol>
+    <details>
+      <summary>Gợi ý câu 3 — vì sao cần so sánh?</summary>
+      <p>Nếu cứ <em>đặt Kỷ lục thành Điểm</em> sau mỗi ván thì ván sau chơi tệ hơn sẽ xoá mất kỷ lục cũ. Phải hỏi trước đã: <em>nếu (Điểm) &gt; (Kỷ lục) thì đặt Kỷ lục thành (Điểm)</em>. Đây đúng là cách mọi trò chơi thật lưu điểm cao nhất.</p>
+    </details>
+  </div>
+
+  <div class="box goal">
+    <h4>📌 Ghi nhớ của bài 3</h4>
+    <p><strong>Biến</strong> là cái hộp nhớ số. <em>đặt … thành</em> để khởi tạo lúc đầu ván, <em>thay đổi … một lượng</em> để cộng dồn trong lúc chơi. <strong>lặp cho đến khi</strong> là vòng lặp có đường ra. <strong>nếu…thì…nếu không</strong> chia đường đi làm hai ngả.</p>
+  </div>
+
+  <nav class="lesson-nav">
+    <a href="/scratch/bai-02-phi-thuyen-vu-tru.html">← Bài 2: Phi thuyền vũ trụ</a>
+    <a href="/scratch/bai-04-dap-chuot-chui.html">Bài 4: Đập chuột chũi →</a>
+  </nav>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-email" href="mailto:coffee@dongquan.net">☕ coffee@dongquan.net</a>
+</footer>
+</body>
+</html>
